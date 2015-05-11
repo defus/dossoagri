@@ -25,7 +25,7 @@ Du coup pour le premier pavé voici la vision (à mettre-à-jour) :
 ## Développement
 * Faire pointer Apache sur le repertoire /public
 * Dans le fichier .htaccess qui se trouve dans le repertoire /public, 
-    * utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire /dossoagri)
+   * utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire /dossoagri)
 ```
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
@@ -43,8 +43,7 @@ Du coup pour le premier pavé voici la vision (à mettre-à-jour) :
     RewriteRule ^ /dossoagri/index.php [L]
 </IfModule>
 ```
-    * utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire /)
-
+   * utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire /)
 ```
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
