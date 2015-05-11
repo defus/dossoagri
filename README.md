@@ -23,6 +23,10 @@ Du coup pour le premier pavé voici la vision (à mettre-à-jour) :
 * Application autre pour le reste (par exemple le template WPF d'Alain )
 
 ## Développement
+* Mettre à jour le repertoire vendor contenant les dépendances composer
+```
+composer update
+```
 * Faire pointer Apache sur le repertoire /public
 * Dans le fichier .htaccess qui se trouve dans le repertoire /public, 
    * utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire /dossoagri)
