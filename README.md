@@ -43,7 +43,6 @@ Du coup pour le premier pavé voici la vision (à mettre-à-jour) :
     RewriteRule ^ /dossoagri/index.php [L]
 </IfModule>
 ```
-
     * utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire /)
 
 ```
