@@ -46,22 +46,23 @@ Du coup pour le premier pavé voici la vision (à mettre-à-jour) :
 
 ** utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire /)
 
-`<IfModule mod_rewrite.c>
-`    <IfModule mod_negotiation.c>
-`        Options -MultiViews
-`    </IfModule>
-`
-`    RewriteEngine On
-`
-`    # Redirect Trailing Slashes...
-`    RewriteRule ^(.*)/$ /$1 [L,R=301]
-`
-`    # Handle Front Controller...
-`    RewriteCond %{REQUEST_FILENAME} !-d
-`    RewriteCond %{REQUEST_FILENAME} !-f
-`    RewriteRule ^ index.php [L]
-`</IfModule>
+```
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
 
+    RewriteEngine On
+
+    # Redirect Trailing Slashes...
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+```
 
 ## En savoir plus
 * [Le Wiki](https://github.com/defus/dossoagri/wiki)
