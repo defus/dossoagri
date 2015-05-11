@@ -23,6 +23,8 @@ Du coup pour le premier pavé voici la vision (à mettre-à-jour) :
 * Application autre pour le reste (par exemple le template WPF d'Alain )
 
 ## Développement
+* Exécuter la base de données `/dev.sql` sur le serveur de données MySQL
+* Changer les paramètres de la base de données dans le fichier `/app/config/database.php`
 * Vérifier l'URL de l'application dans le repertoire `/app/config/app.php`
 * Mettre à jour le repertoire vendor contenant les dépendances composer
 ```
