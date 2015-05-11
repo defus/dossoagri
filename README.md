@@ -23,6 +23,7 @@ Du coup pour le premier pavé voici la vision (à mettre-à-jour) :
 * Application autre pour le reste (par exemple le template WPF d'Alain )
 
 ## Développement
+* Vérifier l'URL de l'application dans le repertoire /app/config/app.php
 * Mettre à jour le repertoire vendor contenant les dépendances composer
 ```
 composer update
