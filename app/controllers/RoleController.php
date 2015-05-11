@@ -24,13 +24,11 @@ class RoleController extends \BaseController {
 
       $validation = Validator::make(\Input::all(), 
         array(
-          'MouvrageID' => 'required',
           'Role' => 'required',
           'UtilisateurID' => 'required'
           ), 
         array(
           'UtilisateurID.required' => "L'identifiant de l'utilisateur est obligatoire !",
-          'MouvrageID.required' => "Le maître d'ouvrage est obligatoire",
           'Role.required' => "Le role est obligatoire"
         )
       );
