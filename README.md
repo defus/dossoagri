@@ -22,6 +22,10 @@ Du coup pour le premier pavé voici la vision (à mettre-à-jour) :
 * Application Web pour les internautes (négociation de prix des recoltes postés) ;
 * Application autre pour le reste (par exemple le template WPF d'Alain )
 
+## Production
+
+* Lavravel fonctionnel avec PHP > =5.4.0
+
 ## Développement
 * Exécuter la base de données `/dev.sql` sur le serveur de données MySQL
 * Changer les paramètres de la base de données dans le fichier `/app/config/database.php`
