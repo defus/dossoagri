@@ -20,8 +20,7 @@ class UserController extends \BaseController {
     }
 
     public function index() {
-        $baseid = Auth::user()->BaseID; 
-        $users = User::where('BaseId', $baseid)->get();
+        $users = User::get();
 
         return \View::make('admin.user.index', array(
                     'users' => $users
@@ -62,8 +61,6 @@ class UserController extends \BaseController {
         } else {
           $user = new User();
           $user->Username = \Input::get('Username');
-          $user->BaseID = $baseid;
-          $user->isbe = (\Input::has('isbe')) ? 1 : 0;
           $user->isadmin = (\Input::has('isadmin')) ? 1 : 0;
           $user->Mail = \Input::get('Mail');
           $user->password = md5(\Input::get('password'));
@@ -78,33 +75,19 @@ class UserController extends \BaseController {
 
 
     public function edit($id) {
-        $baseid = Auth::user()->BaseID; 
-        
-        $mos = Mos::where('BaseID', $baseid)->get();
-        $mos = $this->objectsToArray($mos, 'MouvrageID', 'Societe');
-
         $roles = array('SUPERUTILISATEUR' => 'Super utilisateur', 
             'OPERATEUR' => 'Opérateur', 
-            'BATIMENT' => 'Batiment', 
-            'ARRIVEEAU' => "Arrivée d'eau",
-            'ECLAIRAGE' => 'Eclairage', 
-            'ESPACEVERT' => 'Esaces verts', 
-            'VEHICULE' => 'Véhicule', 
-            'POSTEPRODUCTION' => 'Poste de production', 
-            'AUTREPOSTE' => 'Autre poste', 
-            'COMPTEUR' => 'Compteur', 
-            'FACTURE' => 'Facture');
+            'ALERT' => 'Alerte');
 
         $user = User::find($id);
 
         $username = $user->Username; 
 
-        $userroles = Roles::where('BaseId', $baseid)->where('Username', $username)->get();
+        $userroles = Roles::where('Username', $username)->get();
 
         return \View::make('admin.user.edit', array(
                     'user' => $user,
                     'roles' => $roles,
-                    'mos' => $mos,
                     'userroles' => $userroles
         ));
     }

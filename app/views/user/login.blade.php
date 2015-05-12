@@ -29,13 +29,11 @@
 {{-- Page content --}}
 @section('content')
 
-
-
 <div class="container">
     <div class="row" style="margin-top:10%">
         <div class="col-md-8">
             <div class="jumbotron" >
-                <h1 class="text-center" style="margin-top: 10%">Jiha Tinou</h1>
+                <h1 class="text-center" style="margin-top: 10%">DOSSO Agriculture</h1>
                 <div class="row">
                     <div class="col-md-6">
                         <img src="{{ URL::to('/') }}/dossoagri.jpg" class="img-responsive" alt="Dosso Agriculture" />
