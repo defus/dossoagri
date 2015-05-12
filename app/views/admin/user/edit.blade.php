@@ -65,10 +65,6 @@ $(document).ready(function() {
                                     {{ $errors->first('Username', '<span class="error">:message</span>' ) }}
                                 </div>
                                 <div class="form-group">
-                                    <label>Est un bureau d'étude ?</label>
-                                    {{ Form::checkbox('isbe', Input::old('isbe') ) }}
-                                </div>
-                                <div class="form-group">
                                     <label>Est un administrateur ?</label>
                                     {{ Form::checkbox('isadmin', Input::old('isadmin') ) }}
                                 </div>
@@ -112,10 +108,6 @@ $(document).ready(function() {
                                     {{ Form::select('Role', $roles, Input::old('Role'), array('class' => 'form-control' ) ) }}
                                     {{ $errors->first('Role', '<span class="error">:message</span>' ) }}
                                 </div>
-                                <div class="form-group">
-                                    <label>Maître d'ouvrage</label>
-                                    {{ Form::select('MouvrageID', $mos, Input::old('MouvrageID'), array('class' => 'form-control') ) }}
-                                </div>
                                 {{ Form::submit('Ajouter', array('class'=>'btn btn-primary')) }}
                             {{ Form::close() }}
                         </div>
@@ -138,7 +130,6 @@ $(document).ready(function() {
                                     <thead>
                                         <tr>
                                             <th>Role</th>
-                                            <th>Maitre d'ouvrage</th>
                                             <th class="no-sort" style="width:17px;min-width:75px;max-width:75px;">Actions</th>
                                         </tr>
                                     </thead>
@@ -146,12 +137,10 @@ $(document).ready(function() {
                                         @foreach($userroles as $key => $value)
                                         <tr>
                                             <td>{{$value->Role}}</td>
-                                            <td>{{$value->Mo->Societe}}</td>
                                             <td nowrap="nowrap">
                                                 {{ Form::open(array('url' => 'admin/role/' . $user->UtilisateurID, 'class' => 'pull-right')) }}
                                                     {{ Form::hidden('_method', 'DELETE') }}
                                                     {{ Form::hidden('Role', $value->Role) }}
-                                                    {{ Form::hidden('MouvrageID', $value->record_id) }}
                                                     <button type="submit" class="btn btn-sm btn-danger">
                                                         <i class="fa fa-times"></i>
                                                     </button>

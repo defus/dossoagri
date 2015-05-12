@@ -45,8 +45,6 @@ class RoleController extends \BaseController {
 
           $role = new Roles();
           $role->Username = $user->Username;
-          $role->BaseID = $baseid;
-          $role->record_id = \Input::get('MouvrageID');
           $role->Role = \Input::get('Role');
           
           $role->save();
@@ -60,7 +58,7 @@ class RoleController extends \BaseController {
     public function destroy($id) {
         $user = User::find($id);
         
-        $roles = DB::table('roles')->where('Username', $user->Username)->where('Role', \Input::get('Role'))->where('record_id', \Input::get('MouvrageID'))->delete();
+        $roles = DB::table('roles')->where('Username', $user->Username)->where('Role', \Input::get('Role'))->delete();
         
         return \Redirect::to('admin/user/' . $id . '/edit')
                         ->with('message', 'Role utilisateur supprimé avec succès');

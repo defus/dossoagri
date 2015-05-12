@@ -59,10 +59,6 @@
                                     {{ $errors->first('Username', '<span class="error">:message</span>' ) }}
                                 </div>
                                 <div class="form-group">
-                                    <label>Est un bureau d'étude ?</label>
-                                    {{ Form::checkbox('isbe', Input::old('isbe') ) }}
-                                </div>
-                                <div class="form-group">
                                     <label>Est un administrateur ?</label>
                                     {{ Form::checkbox('isadmin', Input::old('isadmin') ) }}
                                 </div>

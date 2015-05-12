@@ -18,14 +18,14 @@
 {{-- {{ HTML::style('--Path to css--') }} --}}
 @section('css')
 <!-- DataTables CSS -->
-{{ HTML::style('{{ URL::to('/')}}/assets/css/plugins/dataTables.bootstrap.css') }}
-{{ HTML::style('{{ URL::to('/')}}/assets/js/plugins/dataTables/extensions/TableTools-2.2.3/css/dataTables.tableTools.min.css') }}
+{{ HTML::style('assets/css/plugins/dataTables.bootstrap.css') }}
+{{ HTML::style('assets/js/plugins/dataTables/extensions/TableTools-2.2.3/css/dataTables.tableTools.min.css') }}
 @stop
 
 {{-- Page specific JS files --}}
 {{-- {{ HTML::script('--Path to js--') }} --}}
 @section('scripts')
-{{ HTML::script('{{ URL::to('/')}}/assets/js/plugins/dataTables/extensions/TableTools-2.2.3/js/dataTables.tableTools.min.js') }}
+{{ HTML::script('assets/js/plugins/dataTables/extensions/TableTools-2.2.3/js/dataTables.tableTools.min.js') }}
 <script>
 $(document).ready(function() {
     $('#dataTables-example').dataTable({
@@ -72,7 +72,6 @@ $(document).ready(function() {
                             <thead>
                                 <tr>
                                     <th>Login</th>
-                                    <th>Est Bureau d'étude ?</th>
                                     <th>Est administrateur</th>
                                     <th class="no-sort" style="width:17px;min-width:75px;max-width:75px;">Actions</th>
                                 </tr>
@@ -81,7 +80,6 @@ $(document).ready(function() {
                                 @foreach($users as $key => $value)
                                 <tr>
                                     <td>{{$value->Username}}</td>
-                                    <td>{{$value->isbe}}</td>
                                     <td>{{$value->isadmin}}</td>
                                     <td nowrap="nowrap">
                                         <a href="{{ URL::to('admin/user/' . $value->UtilisateurID . '/edit') }}" class="btn btn-sm btn-success"> <i class="fa fa-edit"></i> </a>&nbsp;

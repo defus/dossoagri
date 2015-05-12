@@ -107,13 +107,12 @@ class UserController extends \BaseController {
       );
 
       if ($validation->fails()) {
-          return Redirect::to('user/' . $id . '/edit')
+          return Redirect::to('admin/user/' . $id . '/edit')
               ->withErrors($validation)
               ->withInput(\Input::all());
         } else {
           $user = User::find($id);
           $user->Username = \Input::get('Username');
-          $user->isbe = (\Input::has('isbe')) ? 1 : 0;
           $user->isadmin = (\Input::has('isadmin')) ? 1 : 0;
           $user->Mail = \Input::get('Mail');
           $password = \Input::get('password');
