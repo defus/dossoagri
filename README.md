@@ -22,6 +22,52 @@ Du coup pour le premier pavé voici la vision (à mettre-à-jour) :
 * Application Web pour les internautes (négociation de prix des recoltes postés) ;
 * Application autre pour le reste (par exemple le template WPF d'Alain )
 
+## Développement
+* Exécuter la base de données `/dev.sql` sur le serveur de données MySQL
+* Changer les paramètres de la base de données dans le fichier `/app/config/database.php`
+* Vérifier l'URL de l'application dans le repertoire `/app/config/app.php`
+* Mettre à jour le repertoire vendor contenant les dépendances composer
+```
+composer update
+```
+* Faire pointer Apache sur le repertoire `/public`
+* Dans le fichier `.htaccess` qui se trouve dans le repertoire `/public`, 
+   * utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire `/dossoagri`)
+```
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes...
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ /dossoagri/index.php [L]
+</IfModule>
+```
+   * utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire `/`)
+```
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes...
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+```
 
 ## En savoir plus
 * [Le Wiki](https://github.com/defus/dossoagri/wiki)
