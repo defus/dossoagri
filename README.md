@@ -69,7 +69,29 @@ composer update
 </IfModule>
 ```
 
-* Exécuter le script /dev.sql sur le serveur mysql pour initialiser les tables de développement
+
+## Création de la base de données de développement
+Exécuter la commande suivante depuis la racide du projet pour générer la base de données en environnement de développement :
+```
+php artisan migrate:install
+php artisan migrate:refresh
+php artisan db:seed
+```
+
+## Tests unitaires
+
+### Principe des tests
+Les tests unitaires s'effectuent à l'aide de la base de données en memoire sqllite. 
+Le fichier de configuration est définit dans `/app/config/testing/database.php`.
+
+Lors du lancement du test, la classe `/app/tests/TestCase.php` exécute le script qui initialise la base de données en mémoire.
+ 
+### Lancer les tests
+Pour lancer les tests d'intégration, il faut : 
+
+`cd <racine du projet laravel>`
+
+`vendor/bin/phpunit`
 
 ## Sécurité
 

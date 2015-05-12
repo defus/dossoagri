@@ -20,8 +20,6 @@ class RoleController extends \BaseController {
     }
 
     public function store(){
-      $baseid = Auth::user()->BaseID; 
-
       $validation = Validator::make(\Input::all(), 
         array(
           'Role' => 'required',

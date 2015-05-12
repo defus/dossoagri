@@ -17,22 +17,22 @@ trait HasRole
         }
 
         foreach ($this->roles as $role) {
-            //Vériier par rapport aux roles dun super utilisayeur dans un mo
-            if(in_array($name, array('CONTACT', 'FACTURE', 'COMPTEUR', 'BATIMENT', 'ARRIVEEAU', 'ESPACEVERT', 'ECLAIRAGE', 'VEHICULE', 'POSTEPRODUCTION', 'AUTREPOSTE'))){
+            //Vériier par rapport aux roles dun super utilisayeur
+            if(in_array($name, array('ALERT', 'AGRICULTEUR'))){
                 if ($role->Role == 'SUPERUTILISATEUR') {
                     return true;
                 }
             }
 
-            //Vérifier ra rapport à un opérateur dans un mo
-            if(in_array($name, array('FACTURE', 'COMPTEUR', 'BATIMENT', 'ARRIVEEAU', 'ESPACEVERT', 'ECLAIRAGE', 'VEHICULE', 'POSTEPRODUCTION', 'AUTREPOSTE'))){
+            //Vérifier ra rapport à un opérateur
+            if(in_array($name, array('ALERT', 'AGRICULTEUR'))){
                 if ($role->Role == 'OPERATEUR') {
                     return true;
                 }
             }
 
             //rechercher le role spécifique
-            if ($role->Role == $name && $role->BaseID == $this->BaseID) {
+            if ($role->Role == $name) {
                 return true;
             }
         }

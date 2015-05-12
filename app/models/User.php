@@ -35,22 +35,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function login($data) {
         //Unset token
         unset($data['_token']);
-        $validation = Validator::make($data, array(
-                    //'email' => 'required|email',
-                    'email' => 'required',
-                    'password' => 'required'
+		$validation = Validator::make($data, array(
+	        //'email' => 'required|email',
+	        'email' => 'required',
+	        'password' => 'required'
         ));
-        $data = array('username' => $data['email'], 'password' => $data['password']);
         if ($validation->passes() ) {
-        		$user = User::where('username', '=', $data['username'])->first();
-        		if(isset($user)) {
-						    if($user->password == md5($data['password'])) { // If their password is still MD5
-						        //$user->password = Hash::make(Input::get('password')); // Convert to new format
-						        //$user->save();
-						        Auth::login($user);
-						        return TRUE;
-						    }
-						}
+			$data = array('Username' => $data['email'], 'password' => $data['password']);
+    		return Auth::attempt($data);
         }
         return $validation;
     }

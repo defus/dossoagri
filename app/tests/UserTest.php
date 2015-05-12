@@ -14,22 +14,22 @@ class UserTest extends TestCase {
     $user1['password'] = 'test1';
     $user1['password_confirmation'] = 'test1';
     
-    //Création alerte
+    //Création entité
     $response = $this->call('POST', '/admin/user', $user1);
 
     //Vérifier la redirection vers la vue
-    $this->assertRedirectedTo('alert');
-    $this->assertSessionHas('alert.success');
+    $this->assertRedirectedTo('admin/user');
+    $this->assertSessionHas('success');
     
-    //Vérifier que la réponse contient l'url de l'alerte pour modification
-    $message = $response->getSession()->get('alert.success');
+    //Vérifier que la réponse contient l'url  pour modification
+    $message = $response->getSession()->get('success');
     $content = $response->getContent();
     $pattern = "/admin\/user\/([\d]+)\//";
     $this->assertRegExp($pattern, $message);
-    preg_match_all($pattern, $message, $alertIdFinded);
-    $this->assertCount(2, $alertIdFinded, "Après la création, la vue qui suit doit contenir le numero de l'entité dans le lien de modification");
+    preg_match_all($pattern, $message, $userIdFinded);
+    $this->assertCount(2, $userIdFinded, "Après la création, la vue qui suit doit contenir le numero de l'entité dans le lien de modification");
 
-    $alertId = $alertIdFinded[1][0];;
+    $userId = $userIdFinded[1][0];;
 
     //modification des informations 
     $user1 = array();
@@ -38,21 +38,21 @@ class UserTest extends TestCase {
     $user1['password'] = 'test1';
     $user1['password_confirmation'] = 'test1';
 
-    $response = $this->call('PUT', '/admin\/user/' . $alertId, $user1);
+    $response = $this->call('PUT', '/admin/user/' . $userId, $user1);
 
-    $this->assertRedirectedTo('alert');
-    $this->assertSessionHas('alert.success');
+    $this->assertRedirectedTo('admin/user');
+    $this->assertSessionHas('success');
     
     //Vérifier que la réponse contient l'url  pour modification
-    $message = $response->getSession()->get('alert.success');
+    $message = $response->getSession()->get('success');
     $content = $response->getContent();
     $pattern = "/admin\/user\/([\d]+)\//";
     $this->assertRegExp($pattern, $message);
-    preg_match_all($pattern, $message, $alertIdFinded);
-    $this->assertCount(2, $alertIdFinded, "Après la modification, la vue qui suit doit contenir le numero dans le lien de modification");
+    preg_match_all($pattern, $message, $userIdFinded);
+    $this->assertCount(2, $userIdFinded, "Après la modification, la vue qui suit doit contenir le numero dans le lien de modification");
 
     //Suppression du batiment
-    $response = $this->call('DELETE', '/admin/user/' . $alertId);
+    $response = $this->call('DELETE', '/admin/user/' . $userId);
 
   }
 

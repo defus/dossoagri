@@ -28,19 +28,10 @@ class UserController extends \BaseController {
     }
 
     public function create() {
-        $username = Auth::user()->Username;
-        $baseid = Auth::user()->BaseID; 
-
-        $roles = array('USER' => 'Utilisateur', 'BATIMENT' => 'Batiment');
-
-        return \View::make('admin.user.create', array(
-            'roles' => $roles
-        ));
+        return \View::make('admin.user.create');
     }
 
     public function store(){
-      $baseid = Auth::user()->BaseID; 
-
       $validation = Validator::make(\Input::all(), 
         array(
           'Username' => 'required',
@@ -63,11 +54,12 @@ class UserController extends \BaseController {
           $user->Username = \Input::get('Username');
           $user->isadmin = (\Input::has('isadmin')) ? 1 : 0;
           $user->Mail = \Input::get('Mail');
-          $user->password = md5(\Input::get('password'));
+          $user->password = Hash::make(\Input::get('password'));
 
           $user->save();
 
-          Session::flash('success', "Création de l'utilisateur effectuée avec succès");
+          $modifierUrl = URL::to('admin/user/' . $user->UtilisateurID . '/edit');
+          Session::flash('success', "<p>Création effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier</a></p>");
           return Redirect::to('admin/user');  
           
         }
@@ -93,8 +85,6 @@ class UserController extends \BaseController {
     }
 
     public function update($id){
-      $baseid = Auth::user()->BaseID; 
-
       $validation = Validator::make(\Input::all(), 
         array(
           'Username' => 'required',
@@ -117,12 +107,13 @@ class UserController extends \BaseController {
           $user->Mail = \Input::get('Mail');
           $password = \Input::get('password');
           if(!empty($password)){
-            $user->password = md5(\Input::get('password'));
+            $user->password = Hash::make(\Input::get('password'));
           }
           
           $user->save();
 
-          Session::flash('success', "Mise-à-jour de l'utilisateur effectuée avec succès");
+          $modifierUrl = URL::to('admin/user/' . $user->UtilisateurID . '/edit');
+          Session::flash('success', "<p>Mise-à-jour effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier</a></p>");
           return Redirect::to('admin/user');
         }
     }
