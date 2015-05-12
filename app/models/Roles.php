@@ -3,4 +3,10 @@
     {
       protected $table = 'roles';
       
+      protected $primaryKey = null;
+
+      public $incrementing = false;
+
+      public $timestamps = false;
+      
     }   

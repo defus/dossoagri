@@ -69,7 +69,23 @@ composer update
 </IfModule>
 ```
 
-* Exécuter le script /dev.sql sur le serveur mysql
+* Exécuter le script /dev.sql sur le serveur mysql pour initialiser les tables de développement
+
+## Sécurité
+
+### Rôles des utilisateurs
+
+* Opérateur : est un utilisateur qui peut se connecter à la plateforme et voir les négociations et les alertes postées
+* Super utilisateur : c'est un utilisateur qui aura accès à toutes les fonctionnailités métiers (mais pas technique comme la création des utilisateurs)
+* Administrateur : c'est un administrateur qui peut tout faire et créer les utilisateurs par exemple
+* Il existe des roles plus fins (comme Alerte) pour pouvoir accéder à cetaines fonctionnailités de l'application
+
+### Utilisateurs par défaut
+
+* admin/admin : administrateur (super utilisateur)
+* agri1/agri1 : agriculteur (opérateur)
+* vend1/vend1 : acheteur (opérateur)
+* part1/part1 : partenaire (état, ministère de l'agriculture, ONG, ...)  (opérateur)
 
 ## En savoir plus
 * [Le Wiki](https://github.com/defus/dossoagri/wiki)

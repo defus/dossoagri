@@ -3,12 +3,18 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 11 Mai 2015 à 23:05
+-- Généré le: Mar 12 Mai 2015 à 07:22
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données: `dossoagri`
@@ -22,24 +28,23 @@ USE `dossoagri`;
 -- Structure de la table `roles`
 --
 
+DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `RoleID` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(32) NOT NULL,
-  `Role` enum('OPERATEUR','SUPERUTILISATEUR','ALERT','AGRICULTEUR','ACHETEUR') NOT NULL DEFAULT 'OPERATEUR',
-  `record_id` int(11) NOT NULL,
+  `Role` enum('OPERATEUR','SUPERUTILISATEUR','ALERT','AGRICULTEUR','ACHETEUR','PARTENAIRE') NOT NULL DEFAULT 'OPERATEUR',
   PRIMARY KEY (`RoleID`),
-  KEY `record_id` (`record_id`),
   KEY `roles_ibfk_2` (`Username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Contenu de la table `roles`
 --
 
-INSERT INTO `roles` (`RoleID`, `Username`, `Role`, `record_id`) VALUES
-(1, 'agri', 'OPERATEUR', 1),
-(5, 'agri', '', 2),
-(11, 'agri', 'OPERATEUR', 2);
+INSERT INTO `roles` (`RoleID`, `Username`, `Role`) VALUES
+(11, 'agri', 'OPERATEUR'),
+(12, 'vend1', 'OPERATEUR'),
+(13, 'part1', 'OPERATEUR');
 
 -- --------------------------------------------------------
 
@@ -47,6 +52,7 @@ INSERT INTO `roles` (`RoleID`, `Username`, `Role`, `record_id`) VALUES
 -- Structure de la table `utilisateur`
 --
 
+DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `UtilisateurID` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(32) NOT NULL,
@@ -56,18 +62,18 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `remember_token` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`UtilisateurID`),
   UNIQUE KEY `identifiant` (`Username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Contenu de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`UtilisateurID`, `Username`, `password`, `Mail`, `isadmin`, `remember_token`) VALUES
-(1, 'admin', 'c8520774f9240cfe9d240d2ee7b9fb1f', NULL, 1, 'ZTI8VI8kvGd7gEYCZUZUUEgpPpP6wvfQoz190NNkqHaGCyvYvsKxqNdD5m59'),
-(2, 'Utilisateur_test', 'd8578edf8458ce06fbc5bb76a58c5ca4', NULL, 0, NULL),
-(3, 'agri', 'c8520774f9240cfe9d240d2ee7b9fb1f', '', 0, 'my930wN8mKrUn5KcEFfGxef5wqJ3LGYCxr7CiIvZg2AlZ9XUu30FKhXxnWxw'),
-(5, 'test', '', NULL, 0, NULL),
-(7, 'test1', '', 'me@test.com', 0, NULL),
-(8, 'test2', '', 'me@test.com', 1, NULL),
-(9, 'aaa', '08f8e0260c64418510cefb2b06eee5cd', 'me@test.com', 1, '9CxfWZG5NdGVN2ZEkEBnQgF7TF7LdJ6f4wTXaEuxqI6kPRRasrA6FkQiQpLQ'),
-(10, 'Tree lll mmo', '361228d0a65bd2355b029b2fe0aad7c6', 'tree@tree.com', 0, NULL);
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@dossoagri.com', 1, 'vbso8SrsKX6A2ndmaQOjIkzn38LRAl0WmgpTttgNjKV2Doj0RxXlK697zSqb'),
+(3, 'agri1', '41c54f22770240ebaa4c69902e8bb54b', 'agri1@dossoagri.com', 0, 'my930wN8mKrUn5KcEFfGxef5wqJ3LGYCxr7CiIvZg2AlZ9XUu30FKhXxnWxw'),
+(11, 'vend1', 'faf315ac71cc8ac07143c30f86655096', 'vend1@dossoagri.com', 0, NULL),
+(12, 'part1', 'ffc88b4ca90a355f8ddba6b2c3b2af5c', 'part1@dossoagri.com', 0, NULL);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

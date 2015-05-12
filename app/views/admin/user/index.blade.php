@@ -72,6 +72,7 @@ $(document).ready(function() {
                             <thead>
                                 <tr>
                                     <th>Login</th>
+                                    <th>Email</th>
                                     <th>Est administrateur</th>
                                     <th class="no-sort" style="width:17px;min-width:75px;max-width:75px;">Actions</th>
                                 </tr>
@@ -80,6 +81,7 @@ $(document).ready(function() {
                                 @foreach($users as $key => $value)
                                 <tr>
                                     <td>{{$value->Username}}</td>
+                                    <td>{{$value->Mail}}</td>
                                     <td>{{$value->isadmin}}</td>
                                     <td nowrap="nowrap">
                                         <a href="{{ URL::to('admin/user/' . $value->UtilisateurID . '/edit') }}" class="btn btn-sm btn-success"> <i class="fa fa-edit"></i> </a>&nbsp;
