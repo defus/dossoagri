@@ -69,6 +69,8 @@ composer update
 </IfModule>
 ```
 
+* Exécuter le script /dev.sql sur le serveur mysql
+
 ## En savoir plus
 * [Le Wiki](https://github.com/defus/dossoagri/wiki)
 * Twitter
