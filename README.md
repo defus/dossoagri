@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/defus/dossoagri.svg?branch=master)](https://travis-ci.org/defus/dossoagri)
+
 # dossoagri
 Bienvenu sur le site du projet DOSSIAGRI
 
