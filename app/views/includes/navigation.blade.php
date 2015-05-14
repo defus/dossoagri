@@ -129,6 +129,24 @@
                     <!-- /.nav-second-level -->
                 </li>
                 @endif
+				
+				<!-- Zone de Culture -->
+                <li >
+                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> Zone de Culture<sspan class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a  href="{{ URL::to('admin/user') }}">Liste des Zones</a>
+                        </li>
+                        <li>
+                            <a href="{{ URL::to('admin/user/create') }}">Liste des Cultures</a>
+                        </li>
+                        <li>
+                            <a href="{{ URL::to('admin/user/create') }}">Ajouter une zone</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+				<!-- End Zone de Culture -->
             </ul>
         </div>
         <!-- /.sidebar-collapse -->
