@@ -50,7 +50,7 @@
 
 </head>
 
-<body>
+<body class="loginback">
 
     @yield('content')
     
