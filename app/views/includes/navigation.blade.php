@@ -101,6 +101,20 @@
                 <li>
                     <a @if(Request::is('/')) class="active" @endif href="{{ URL::to('') }}"><i class="fa fa-dashboard fa-fw"></i> Tableau de bord</a>
                 </li>
+                @if(Auth::user()->hasRole('RECOLTE'))
+                <li @if(Request::is('recolte') or Request::is('recolte/create') or Request::is('recolte/*/edit')) class="active" @endif>
+                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Récoltes<sspan class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a @if(Request::is('recolte') or Request::is('recolte/*/edit')) class="active" @endif href="{{ URL::to('recolte') }}">Liste des récoltes enregistrées</a>
+                        </li>
+                        <li>
+                            <a @if(Request::is('recolte/create')) class="active" @endif href="{{ URL::to('recolte/create') }}">Ajouter une récolte</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                @endif
                 @if(Auth::user()->hasRole('ALERT'))
                 <li @if(Request::is('alert') or Request::is('alert/create') or Request::is('alert/*/edit')) class="active" @endif>
                     <a href="#"><i class="fa fa-files-o fa-fw"></i> Alertes<sspan class="fa arrow"></span></a>

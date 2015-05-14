@@ -52,6 +52,8 @@ Route::filter('auth', function()
 
 		$securityCheck->routeNeedsRole( 'alert*', array('ALERT') );
 		
+		$securityCheck->routeNeedsRole( 'recolte*', array('RECOLTE') );
+		
 		$securityCheck->routeNeedsRole( 'admin*', array('ADMIN') );
 	}
 });

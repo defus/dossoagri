@@ -51,7 +51,7 @@ class UserTest extends TestCase {
     preg_match_all($pattern, $message, $userIdFinded);
     $this->assertCount(2, $userIdFinded, "Après la modification, la vue qui suit doit contenir le numero dans le lien de modification");
 
-    //Suppression du batiment
+    //Suppression
     $response = $this->call('DELETE', '/admin/user/' . $userId);
 
   }
