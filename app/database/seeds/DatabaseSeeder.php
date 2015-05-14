@@ -11,13 +11,13 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		$this->call('UserTableSeeder');
-		$this->command->info('User table seeded!');
+		$this->call('TestDataSeeder');
+		$this->command->info('Database for tests seeded!');
 	}
 
 }
 
-class UserTableSeeder extends Seeder {
+class TestDataSeeder extends Seeder {
 
     public function run()
     {
@@ -37,6 +37,25 @@ class UserTableSeeder extends Seeder {
         Roles::create(array('Username' => $part1->Username, 'Role' => 'OPERATEUR'));
         Roles::create(array('Username' => $vend1->Username, 'Role' => 'OPERATEUR'));
         Roles::create(array('Username' => $agri1->Username, 'Role' => 'OPERATEUR'));
+        
+        // Charger les produits
+        Produit::create(array('Ref' => 'PAPAYE', 'Nom' => 'Papaye'));
+        Produit::create(array('Ref' => 'MANGUE', 'Nom' => 'Mangue'));
+        
+        $mangue = Produit::where('Ref', 'MANGUE')->firstOrFail();
+        
+        //Charger les recoltes pour les produit
+        $recolte = new Recolte();
+        $recolte->Poids = 10;
+        $recolte->ProduitID = $mangue->ProduitID;
+        $recolte->AgriculteurID = $agri1->UtilisateurID;
+        $recolte->DateSoumission = '2015-10-10';
+        $recolte->StatutSoumission = 'VALIDE';
+        $recolte->CanalSoumission = 'INTERNET';
+        $recolte->InitiateurID = $agri1->UtilisateurID;
+        $recolte->save();
+
+        
     }
 
 }

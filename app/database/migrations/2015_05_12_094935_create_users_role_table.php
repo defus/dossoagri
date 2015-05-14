@@ -12,8 +12,6 @@ class CreateUsersRoleTable extends Migration {
 	 */
 	public function up()
 	{
-		
-		
 		if(!Schema::hasTable('utilisateur')){
           Schema::create('utilisateur', function($table)
           {
@@ -37,8 +35,7 @@ class CreateUsersRoleTable extends Migration {
 				->default('OPERATEUR');
 	      });
 		  Schema::table('roles', function($table){
-			$table->foreign('Username')->references('Username')->on('utilisateur')->onDelete('cascade');
-			$table->index('Username');
+			$table->foreign('Username')->references('Username')->on('utilisateur')->onDelete('cascade')->onUpdate('cascade');
 		  });
 	    }
 		  if(!Schema::hasTable('production')){
