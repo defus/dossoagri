@@ -113,6 +113,71 @@ class RecolteController extends \BaseController {
         }
     }
 
+    public function storeSMS(){
+    	
+    	$sender = \Input::get('sender');
+    	$keyword = \Input::get('keyword');
+    	$sendtime = new Datetime( \Input::get('sendtime') );
+    	$param = \Input::get('param');    	
+    	$paramArray = explode(' ', $param);
+    	
+    	$user = User::where('telephone', $sender)->firstOrFail();
+    	$produit = Produit::where('Nom', $paramArray[0])->firstOrFail();
+    	
+    	$submissionData = array(
+    		'Poids' => $paramArray[1],
+    		'ProduitID' => $produit->ProduitID,
+    		'AgriculteurID' => $user->UtilisateurID,
+    		'DateSoumission' => $sendtime->format('d/m/Y'),
+    		'StatutSoumission' => 'SOUMIS',
+    		'CanalSoumission' => 'SMS'
+    	);
+    	
+    	$validation = Validator::make($submissionData,
+    			array(
+    					'Poids' => 'required|numeric',
+    					'ProduitID' => 'required|numeric',
+    					'AgriculteurID' => 'required|numeric',
+    					'DateSoumission' => 'required|date_format:"d/m/Y"',
+    					'StatutSoumission' => 'required',
+    					'CanalSoumission' => 'required'
+    			),
+    			array(
+    					'Poids.required' => "Merci de renseigner le poids",
+    					'Poids.numeric' => "Le poids doit-être au format (#0,00) avec deux chiffres après la virgule",
+    					'DateSoumission.date_format' => "La date de soumission n'est pas une date valide au format (DD/MM/YYYY)",
+    					'DateSoumission.required' => "Merci de remplir le champ Date de soumission",
+    					'AgriculteurID.numeric' => "L'agriculteur sélectionné n'est pas valide",
+    					'AgriculteurID.required' => "L'agriculteur sélectionné n'est pas valide",
+    					'ProduitID.numeric' => "Le produit sélectionné n'est pas valide",
+    					'ProduitID.required' => "Le produit sélectionné n'est pas valide"
+    			)
+    	);
+    
+    	if ($validation->fails()) {
+    		return Redirect::to('recolte/create')
+    		->withErrors($validation)
+    		->withInput(\Input::all());
+    	} else {
+    		$dateSoumission = \Carbon\Carbon::createFromFormat('d/m/Y', $submissionData['DateSoumission']);
+    
+    		$recolte = new Recolte();
+    		$recolte->Poids = $submissionData['Poids'];
+    		$recolte->ProduitID = $submissionData['ProduitID'];
+    		$recolte->AgriculteurID = $submissionData['AgriculteurID'];
+    		$recolte->DateSoumission = $dateSoumission->toDateString();
+    		$recolte->StatutSoumission = $submissionData['StatutSoumission'];
+    		$recolte->CanalSoumission = $submissionData['CanalSoumission'];
+    		$recolte->InitiateurID = Auth::user()->UtilisateurID;
+    
+    		$recolte->save();
+    
+    		$modifierUrl = URL::to('recolte/' . $recolte->RecolteID . '/edit');
+    		Session::flash('success', "<p>Création de la récolte effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier la récolte</a></p>");
+    		return Redirect::to('recolte');
+    	}
+    }
+    
     public function edit($id)
     {
       $recolte = Recolte::find($id);

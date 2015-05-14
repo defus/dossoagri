@@ -21,6 +21,7 @@ class CreateUsersRoleTable extends Migration {
 			$table->string('password');
 			$table->string('nom')->nullable();
 			$table->string('prenom')->nullable();
+			$table->string('telephone')->nullable();
 			$table->string('isadmin', 1)->default(0);
 			$table->string('remember_token', 100)->nullable();
           });
@@ -37,20 +38,7 @@ class CreateUsersRoleTable extends Migration {
 		  Schema::table('roles', function($table){
 			$table->foreign('Username')->references('Username')->on('utilisateur')->onDelete('cascade')->onUpdate('cascade');
 		  });
-	    }
-		  if(!Schema::hasTable('production')){
-	    	Schema::create('production', function($table)
-	    	{
-	    		$table->increments('ProductionID');
-	    		$table->string('type')->unique();
-	    		$table->string('Username')->nullable();
-	    		$table->string('quantite');
-	    	});
-	    	Schema::table('production', function($table){
-	    		$table->foreign('Username')->references('Username')->on('utilisateur')->onDelete('cascade');
-	    		$table->index('Username');
-	    	});
-	    }
+	    }		
 		
 	}
 

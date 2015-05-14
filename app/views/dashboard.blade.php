@@ -57,7 +57,7 @@ $(document).ready(function() {
                         </div>
                     </div>
                 </div>
-                <a href="{{ URL::to('facture') }}">
+                <a href="{{ URL::to('recolte') }}">
                     <div class="panel-footer">
                         <span class="pull-left">Voir détails</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

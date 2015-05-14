@@ -25,6 +25,8 @@ Route::group(array('prefix','/'), function() {
       
       Route::resource('recolte', 'RecolteController');
       Route::get('recolte/datatable/ajax', 'RecolteController@datatable');
+      Route::get('recolte/addsms/ajax', 'RecolteController@storeSMS');
+      
       
       Route::get('produit/select2/ajax', 'ProduitController@select2');
       
