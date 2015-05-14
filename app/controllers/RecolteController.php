@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Facade;
 
 class RecolteController extends \BaseController {
     public static $statutSoumissions = array('SOUMIS' => 'Soumis', 'VALIDE' => 'Valide');
@@ -171,6 +172,10 @@ class RecolteController extends \BaseController {
     		$recolte->InitiateurID = Auth::user()->UtilisateurID;
     
     		$recolte->save();
+    		
+    		$ws = New SMSWebServices(Facade::getFacadeApplication());
+    		$msg = "Votre recolte de " . $submissionData['Poids'] . " KG de " . $submissionData['ProduitID'] . " a bien ete enregistree. Merci."; 
+    		$ws->sendmsg($sender, $msg);
     
     		$modifierUrl = URL::to('recolte/' . $recolte->RecolteID . '/edit');
     		Session::flash('success', "<p>Création de la récolte effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier la récolte</a></p>");

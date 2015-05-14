@@ -1,5 +1,7 @@
 <?php
 
+//error_reporting(E_ALL ^ E_NOTICE);
+
 /*
 |--------------------------------------------------------------------------
 | Register The Laravel Class Loader
