@@ -7,39 +7,16 @@
 {{-- Page specific CSS files --}}
 {{-- {{ HTML::style('--Path to css--') }} --}}
 @section('css')
-<style>
-#map {
-  min-height: 600px;
-  border: 1px solid #000;
-}    
-</style>
+
+ {{ HTML::style('assets/css/plugins/jquery-gmaps-latlon-picker.css') }}
+ 
 @endsection
 
 {{-- Page specific JS files --}}
 {{-- {{ HTML::script('--Path to js--') }} --}}
 @section('scripts')
-<script>
-window.onload = function() {
-    var latlng = new google.maps.LatLng(13.525120 , 2.107531);
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: latlng,
-        zoom: 11,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-    var marker = new google.maps.Marker({
-        position: latlng,
-        map: map,
-        title: 'Niamey',
-        draggable: true
-    });
-    google.maps.event.addListener(marker, 'dragend', function(a) {
-        console.log(a);
-        var div = document.createElement('div');
-        div.innerHTML = a.latLng.lat().toFixed(4) + ', ' + a.latLng.lng().toFixed(4);
-        document.getElementsByTagName('body')[0].appendChild(div);
-    });
-};
-</script>
+
+{{ HTML::script('assets/js/plugins/maps/jquery-gmaps-latlon-picker.js') }}
 @endsection
 
 {{-- Page content --}}
@@ -79,12 +56,12 @@ window.onload = function() {
                                
                                  <div class="form-group">
                                     <label>Longitude</label>
-                                    {{ Form::text('longitude',  '13.525120', array('class' => 'form-control','readonly'=>'true')) }}
+                                    {{ Form::text('longitude',  '2.107531', array('class' => 'form-control gllpLongitude','readonly'=>'true')) }}
                                 </div>
                                 
                                    <div class="form-group">
                                     <label>Latitude</label>
-                                    {{ Form::text('latitude',  '2.107531', array('class' => 'form-control','readonly'=>'true')) }}
+                                    {{ Form::text('latitude',  '13.525120', array('class' => 'form-control gllpLatitude','readonly'=>'true')) }}
                                 </div>
                                 
                                 <div class="form-group">
@@ -115,7 +92,16 @@ window.onload = function() {
                     <div class="row">
                         <div class="col-lg-12">
                              <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-                               <div id="map"></div>
+                              
+                                   <fieldset class="gllpLatlonPicker">
+		 
+		<div class="gllpMap">Google Maps</div>
+		<br/>
+		 
+	 <input type="hidden" class="gllpZoom" value="9"/>
+		 
+		<br/>
+	</fieldset>
                         </div>
                         <!-- /.col-lg-6 (nested) -->
                     </div>
