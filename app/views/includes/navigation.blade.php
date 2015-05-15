@@ -88,7 +88,7 @@
         </li>
         <!-- /.dropdown -->
         <li >
-            <img alt="Brand" src="{{ URL::to('/') }}/dossoagri.jpg" style="height:35px;width:35px;" >
+            <img alt="Brand" src="/assets/images/dossoagri-logo.png" style="height:35px;width:35px;" >
             
         </li>
         <!-- /.dropdown -->
