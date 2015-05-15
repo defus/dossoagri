@@ -116,14 +116,14 @@
                 </li>
                 @endif
                 @if(Auth::user()->hasRole('ALERT'))
-                <li @if(Request::is('alert') or Request::is('alert/create') or Request::is('alert/*/edit')) class="active" @endif>
+                <li @if(Request::is('alerte') or Request::is('alerte/create') or Request::is('alerte/*/edit')) class="active" @endif>
                     <a href="#"><i class="fa fa-files-o fa-fw"></i> Alertes<sspan class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a @if(Request::is('alert') or Request::is('alert/*/edit')) class="active" @endif href="{{ URL::to('alert') }}">Liste des alertes enregistrées</a>
+                            <a @if(Request::is('alerte') or Request::is('alerte/*/edit')) class="active" @endif href="{{ URL::to('alerte') }}">Liste des alertes enregistrées</a>
                         </li>
                         <li>
-                            <a @if(Request::is('alert/create')) class="active" @endif href="{{ URL::to('alert/create') }}">Ajouter une alerte</a>
+                            <a @if(Request::is('alerte/create')) class="active" @endif href="{{ URL::to('alerte/create') }}">Ajouter une alerte</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
