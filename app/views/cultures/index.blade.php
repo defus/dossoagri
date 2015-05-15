@@ -56,36 +56,23 @@ $(document).ready(function() {
                             {{ $message }}
                         </div>
                     @endif
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Nom</th>
-                                    <th>Description</th>
-                                    <th class="no-sort" style="width:17px;min-width:75px;max-width:75px;">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($cultures as $key => $value)
-                                <tr>
-                                    <td><a href="{{ URL::to('culture/' . $value->id ) }}" ><img src="/assets/images/{{$value->image}}"  class="img-circle"></a></td>
-                                    <td>{{$value->name}}</td>
-                                    <td>{{$value->description}}</td>
-                                    <td nowrap="nowrap">
-                                        <a href="{{ URL::to('culture/' . $value->id .'/modify') }}" class="btn btn-sm btn-success"> <i class="fa fa-edit"></i> </a>&nbsp;
-                                        {{ Form::open(array('url' => 'culture/' . $value->id, 'class' => 'pull-right')) }}
-                                            {{ Form::hidden('_method', 'DELETE') }}
-                                            <button type="submit" class="btn btn-sm btn-danger">
+                     @foreach($cultures as $key => $value)
+                     <div class="col-sm-6 col-md-2">
+                           <div class="thumbnail">
+                            <a href="{{ URL::to('culture/' . $value->id ) }}" ><img src="/assets/images/{{$value->image}}"  class="img-circle"></a>
+                            <div class="caption">
+                                <h3 id="thumbnail-label">{{$value->name}}<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
+                                <p>{{$value->description}}</p>
+                                <p><a href="{{ URL::to('culture/' . $value->id .'/modify') }}" class="btn btn-success"> <i class="fa fa-edit"></i> </a>   <button type="submit" class="btn btn-sm btn-danger">
                                                 <i class="fa fa-times"></i>
-                                            </button>
-                                        {{ Form::close() }}
-                                      </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                            </button></p>
+                                    
+                            </div>
+                        </div>
                     </div>
+                     @endforeach
+                     
+     
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -94,6 +81,9 @@ $(document).ready(function() {
         <!-- /.col-lg-4 -->
     </div>
     <!-- /.row -->
+    
+    
+    
 
 </div>
 <!-- /#page-wrapper -->
