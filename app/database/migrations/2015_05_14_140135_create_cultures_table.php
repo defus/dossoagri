@@ -29,7 +29,9 @@ class CreateCulturesTable extends Migration {
             array(
                 array('name' => 'ble', 'description'=> 'La culture du ble', 'image'=> 'ble.jpg','created_at'=>date('Y-m-d H:m:s')),
                 array('name' => 'mil', 'description'=> 'La culture du mil', 'image'=> 'mil.jpg','created_at'=>date('Y-m-d H:m:s')),
-                array('name' => 'fonio', 'description'=> 'La culture du fonio', 'image'=> 'fonio.jpg','created_at'=>date('Y-m-d H:m:s'))
+                array('name' => 'fonio', 'description'=> 'La culture du fonio', 'image'=> 'fonio.jpg','created_at'=>date('Y-m-d H:m:s')),
+				array('name' => 'mais', 'description'=> 'La culture du mais', 'image'=> 'mais.jpg','created_at'=>date('Y-m-d H:m:s')),
+				array('name' => 'riz', 'description'=> 'La culture du riz', 'image'=> 'riz.jpg','created_at'=>date('Y-m-d H:m:s'))
             )
         );
 		

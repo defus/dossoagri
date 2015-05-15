@@ -37,6 +37,14 @@ Route::group(array('prefix','/'), function() {
       Route::get('culture/{id}', array('as'=>'culturedetail', 'uses'=> 'CultureController@show'));
       Route::get('culture/{id}/modify', array('as'=>'cultureedit', 'uses'=> 'CultureController@edit'));
       Route::resource('culture/update', 'CultureController@update');
+      
+       //Zone de  Cultures 
+      Route::resource('culturezones', 'CultureZoneController@index');
+      Route::resource('culturezone/new', 'CultureZoneController@create');
+      Route::resource('culturezone/save', 'CultureZoneController@store');
+      Route::get('culturezone/{id}', array('as'=>'culturezonedetail', 'uses'=> 'CultureZoneController@show'));
+      Route::get('culturezone/{id}/modify', array('as'=>'culturezoneedit', 'uses'=> 'CultureZoneController@edit'));
+      Route::resource('culturezone/update', 'CultureZoneController@update');
 
   });
 

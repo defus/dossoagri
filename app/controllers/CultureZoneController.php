@@ -9,7 +9,9 @@ class CultureZoneController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		 return \View::make('culturezones.index', array(
+                    'culturezones' => CultureZones::get()
+        ));
 	}
 
 
