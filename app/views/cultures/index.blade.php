@@ -59,7 +59,7 @@ $(document).ready(function() {
                      @foreach($cultures as $key => $value)
                      <div class="col-sm-6 col-md-2">
                            <div class="thumbnail">
-                            <a href="{{ URL::to('culture/' . $value->id ) }}" ><img src="/assets/images/{{$value->image}}"  class="img-circle"></a>
+                            <a href="{{ URL::to('culture/' . $value->id ) }}" ><img src="{{ URL::to('/') }}/assets/images/{{$value->image}}"  class="img-circle"></a>
                             <div class="caption">
                                 <h3 id="thumbnail-label">{{$value->name}}<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
                                 <p>{{$value->description}}</p>
