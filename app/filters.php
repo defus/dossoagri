@@ -54,6 +54,8 @@ Route::filter('auth', function()
 		
 		$securityCheck->routeNeedsRole( 'recolte*', array('RECOLTE') );
 		
+		$securityCheck->routeNeedsRole( 'negociationrecolte*', array('NEGOCIATIONRECOLTE') );
+		
 		$securityCheck->routeNeedsRole( 'admin*', array('ADMIN') );
 	}
 });
