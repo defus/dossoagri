@@ -9,7 +9,17 @@
 @section('css')
 
  {{ HTML::style('assets/css/plugins/jquery-gmaps-latlon-picker.css') }}
- 
+<style>
+.entry:not(:first-of-type)
+{
+    margin-top: 10px;
+}
+
+.glyphicon
+{
+    font-size: 12px;
+}
+</style> 
 @endsection
 
 {{-- Page specific JS files --}}
@@ -17,6 +27,39 @@
 @section('scripts')
 
 {{ HTML::script('assets/js/plugins/maps/jquery-gmaps-latlon-picker.js') }}
+{{ HTML::script('assets/js/plugins/maps/moment.js') }}
+{{ HTML::script('assets/js/plugins/maps/bootstrap-datetimepicker.js') }}
+<script>
+$(document).ready(function() 
+{
+    $(document).on('click', '.btn-add', function(e)
+    {
+       
+        e.preventDefault();
+
+        var controlForm = $('.controls');
+            currentEntry = $(this).parents('.entry:first');
+            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+ 
+        newEntry.find('input').val('');
+        controlForm.find('.entry:not(:last) .btn-add')
+            .removeClass('btn-add').addClass('btn-remove')
+            .removeClass('btn-success').addClass('btn-danger')
+            .html('<span class="glyphicon glyphicon-minus"></span>');
+            
+    }).on('click', '.btn-remove', function(e)
+    {
+		$(this).parents('.entry:first').remove();
+
+		e.preventDefault();
+		return false;
+	});
+    
+      $('#datetimefrom').datetimepicker();
+      $('#datetimeto').datetimepicker();
+});
+
+</script>
 @endsection
 
 {{-- Page content --}}
@@ -68,6 +111,49 @@
                                     <label>Description</label>
                                     {{ Form::textarea('description', Input::old('description'), array('class' => 'form-control')) }}
                                 </div>
+                                
+                                <div class="control-group" id="fields">
+            <label class="control-label" for="field1">Periode de Culture </label>
+            <div class="controls"> 
+                 
+                    <div class="entry input-group col-xs-12">
+                       <div class="row">
+                            <div class="col-xs-4">
+                                
+                                {{ Form::select('cultureid', $cultures, Input::old('cultureid'), array('class' => 'form-control' ) ) }}
+                             </div>
+                            <div class="col-xs-3">
+                                 <div class='input-group date' id='datetimefrom'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class='input-group date' id='datetimeto'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    	<span class="input-group-btn">
+                            <button class="btn btn-success btn-add" type="button">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                
+           
+            
+               
+            </div>
+             <br>
+            <small>Cliquer sur <span class="glyphicon glyphicon-plus gs"></span> pour ajouter une nouvelle p&eacute;riode :)</small>
+             <br><br><br><br>
+        </div>
                                 
                                 {{ Form::submit('Enregistrer', array('class'=>'btn btn-primary')) }}
                                 {{ link_to(URL::previous(), 'Annuler', ['class' => 'btn btn-default']) }}

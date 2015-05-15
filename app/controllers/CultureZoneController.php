@@ -23,7 +23,8 @@ class CultureZoneController extends \BaseController {
 	 */
 	public function create()
 	{
-		        return \View::make('culturezones.create');
+		$cultures = DB::table('cultures')->lists('name','id');
+		        return \View::make('culturezones.create', array('cultures' => $cultures));
 	}
 
 
