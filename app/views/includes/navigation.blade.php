@@ -88,7 +88,7 @@
         </li>
         <!-- /.dropdown -->
         <li >
-            <img alt="Brand" src="{{ URL::to('/') }}/dossoagri.jpg" style="height:35px;width:35px;" >
+            <img alt="Brand" src="/assets/images/dossoagri-logo.png" style="height:35px;width:35px;" >
             
         </li>
         <!-- /.dropdown -->
@@ -148,6 +148,22 @@
                     <!-- /.nav-second-level -->
                 </li>
                 @endif
+				
+				<!-- Zone de Culture -->
+                <li @if(Request::is('cultures') or Request::is('culturezones') or Request::is('culture/*') or Request::is('culturezone/*')) class="active" @endif >
+                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> Zone de Culture<sspan class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a @if(Request::is('culturezones') or Request::is('culturezone/*')) class="active" @endif   href="{{ URL::to('culturezones') }}">Liste des Zones</a>
+                        </li>
+                        <li>
+                            <a  @if(Request::is('cultures') or Request::is('culture/*') ) class="active" @endif  href="{{ URL::to('cultures') }}">Liste des Cultures</a>
+                        </li>
+                       
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+				<!-- End Zone de Culture -->
             </ul>
         </div>
         <!-- /.sidebar-collapse -->
