@@ -9,7 +9,8 @@ class CultureZoneController extends \BaseController {
 	 */
 	public function index()
 	{
-		 return \View::make('culturezones.index', array(
+		
+        return \View::make('culturezones.index', array(
                     'culturezones' => CultureZones::get()
         ));
 	}
@@ -22,7 +23,7 @@ class CultureZoneController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		        return \View::make('culturezones.create');
 	}
 
 
@@ -33,7 +34,34 @@ class CultureZoneController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$validation = Validator::make(\Input::all(), 
+        array(
+          'name' => 'required'
+          ), 
+        array(
+          'name.required' => "Le nom est obligatoire !"
+        )
+      );
+
+      if ($validation->fails()) {
+          return Redirect::to('culturezone/create')
+              ->withErrors($validation)
+              ->withInput(\Input::all());
+        } else {
+          $culturezone = new CultureZones();
+          $culturezone->name = \Input::get('name');
+          $culturezone->description = \Input::get('description');
+          $culturezone->latitude = \Input::get('latitude');
+		   $culturezone->longitude = \Input::get('longitude');
+          
+
+          $culturezone->save();
+
+          $modifierUrl = URL::to('culturezone/' . $culturezone->id . '/modify');
+          Session::flash('success', "<p>Création effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier</a></p>");
+          return Redirect::to('culturezones');  
+          
+        }
 	}
 
 
@@ -45,7 +73,8 @@ class CultureZoneController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		return \View::make('culturezones.detail')
+                    ->with('culturezone', CultureZones::find($id));
 	}
 
 
@@ -57,7 +86,8 @@ class CultureZoneController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		return \View::make('culturezones.edit')
+                    ->with('culturezone', CultureZones::find($id));
 	}
 
 
@@ -67,9 +97,38 @@ class CultureZoneController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
-		//
+		$id= \Input::get('id');
+		$validation = Validator::make(\Input::all(), 
+        array(
+          'name' => 'required'
+          ), 
+        array(
+          'name.required' => "Le nom est obligatoire !"
+        )
+      );
+
+      if ($validation->fails()) {
+          return Redirect::to('culturezone/'.$id.'/modify')
+              ->withErrors($validation)
+              ->withInput(\Input::all());
+        } else {
+          $culturezone = CultureZones::find($id);
+          
+          $culturezone->name = \Input::get('name');
+          $culturezone->description = \Input::get('description');
+           $culturezone->latitude = \Input::get('latitude');
+		   $culturezone->longitude = \Input::get('longitude');
+          
+
+          $culturezone->save();
+
+          $modifierUrl = URL::to('culturezone/' . $culturezone->id . '/modify');
+          Session::flash('success', "<p>Modification effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier</a></p>");
+          return Redirect::to('culturezones');  
+          
+        }
 	}
 
 

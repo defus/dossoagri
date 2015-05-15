@@ -131,14 +131,14 @@
                 @endif
 				
 				<!-- Zone de Culture -->
-                <li >
+                <li @if(Request::is('cultures') or Request::is('culturezones') or Request::is('culture/*') or Request::is('culturezone/*')) class="active" @endif >
                     <a href="#"><i class="fa fa-sitemap fa-fw"></i> Zone de Culture<sspan class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a @if(Request::is('culturezones') or Request::is('culturezone/*')) class="active" @endif   href="{{ URL::to('culturezones') }}">Liste des Zones</a>
                         </li>
                         <li>
-                            <a  @if(Request::is('cultures')) class="active" @endif  href="{{ URL::to('cultures') }}">Liste des Cultures</a>
+                            <a  @if(Request::is('cultures') or Request::is('culture/*') ) class="active" @endif  href="{{ URL::to('cultures') }}">Liste des Cultures</a>
                         </li>
                        
                     </ul>
