@@ -96,9 +96,37 @@ class CultureController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
-		//
+		$id= \Input::get('id');
+		$validation = Validator::make(\Input::all(), 
+        array(
+          'name' => 'required'
+          ), 
+        array(
+          'name.required' => "Le nom est obligatoire !"
+        )
+      );
+
+      if ($validation->fails()) {
+          return Redirect::to('culture/'.$id.'/modify')
+              ->withErrors($validation)
+              ->withInput(\Input::all());
+        } else {
+          $culture = Cultures::find($id);
+          
+          $culture->name = \Input::get('name');
+          $culture->description = \Input::get('description');
+          $culture->image = \Input::get('image');
+          
+
+          $culture->save();
+
+          $modifierUrl = URL::to('culture/' . $culture->id . '/modify');
+          Session::flash('success', "<p>Modification effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier</a></p>");
+          return Redirect::to('cultures');  
+          
+        }
 	}
 
 

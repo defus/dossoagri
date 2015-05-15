@@ -36,6 +36,7 @@ Route::group(array('prefix','/'), function() {
       Route::resource('culture/save', 'CultureController@store');
       Route::get('culture/{id}', array('as'=>'culturedetail', 'uses'=> 'CultureController@show'));
       Route::get('culture/{id}/modify', array('as'=>'cultureedit', 'uses'=> 'CultureController@edit'));
+      Route::resource('culture/update', 'CultureController@update');
 
   });
 

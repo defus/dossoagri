@@ -1,7 +1,7 @@
 @extends('templates.normal')
 
 {{-- Page title --}}
-@section('title') Liste des uilisateurs @endsection
+@section('title') Liste des cultures @endsection
 
 {{-- Page specific CSS files --}}
 {{-- {{ HTML::style('--Path to css--') }} --}}
