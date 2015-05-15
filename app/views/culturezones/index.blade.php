@@ -26,6 +26,8 @@ $(document).ready(function() {
             "url": "{{ URL::to('/')}}/assets/js/plugins/dataTables/French.lang"
         }
     });
+    
+    $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
 @endsection
@@ -71,7 +73,7 @@ $(document).ready(function() {
                                 @foreach($culturezones as $key => $value)
                                 <tr>
                                      <td>{{$value->name}}</td>
-                                     <td>{{$value->longitude}} <br> {{$value->latitude}}</td>
+                                     <td>{{$value->longitude}} <br> {{$value->latitude}} <br><a href="#" data-toggle="tooltip" data-html="true" data-placement="right" title="afficher la carte"><i class="fa fa-map-marker fa-2"></i></a></td>
                                     <td>{{$value->description}}</td>
                                     <td nowrap="nowrap">
                                         <a href="{{ URL::to('culturezone/' . $value->id .'/modify') }}" class="btn btn-sm btn-success"> <i class="fa fa-edit"></i> </a>&nbsp;
