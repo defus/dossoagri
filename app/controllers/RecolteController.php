@@ -7,8 +7,6 @@ class RecolteController extends \BaseController {
   
     public function index()
     {
-      $baseid = Auth::user()->BaseID; 
-
       return  View::make('recolte.index');
     }
 
@@ -34,7 +32,7 @@ class RecolteController extends \BaseController {
           $q->where(DB::raw('LOWER(produit.Nom)'), 'LIKE', Str::lower('%' . trim($search['value']) . '%' ));
           $q->where(DB::raw('LOWER(utilisateur.Ref)'), 'LIKE', Str::lower('%' . trim($search['value']) . '%' ));
           $q->where(DB::raw('LOWER(utilisateur.Nom)'), 'LIKE', Str::lower('%' . trim($search['value']) . '%' ));
-          $q->where(DB::raw('LOWER(produit.Prenom)'), 'LIKE', Str::lower('%' . trim($search['value']) . '%' ));
+          $q->where(DB::raw('LOWER(utilisateur.Prenom)'), 'LIKE', Str::lower('%' . trim($search['value']) . '%' ));
         });
       }
 

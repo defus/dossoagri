@@ -69,7 +69,11 @@ class UserController extends \BaseController {
     public function edit($id) {
         $roles = array('SUPERUTILISATEUR' => 'Super utilisateur', 
             'OPERATEUR' => 'Opérateur', 
-            'ALERT' => 'Alerte');
+            'ALERT' => 'Gestion des alertes',
+            'RECOLTE' => 'Gestion des récoltes',
+            'AGRICULTEUR' => 'Agriculteur',
+            'ACHETEUR' => 'Acheteur',
+            'PARTENAIRE' => 'Partenaire');
 
         $user = User::find($id);
 

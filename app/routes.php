@@ -27,6 +27,12 @@ Route::group(array('prefix','/'), function() {
       Route::get('recolte/datatable/ajax', 'RecolteController@datatable');
       Route::get('recolte/addsms/ajax', 'RecolteController@storeSMS');
       
+      Route::resource('negociationrecolte', 'NegociationRecolteController');
+      Route::get('negociationrecolte/{recolteID}/create', 'NegociationRecolteController@negociationRecolteCreate');
+      Route::post('negociationrecolte/{recolteID}/store', 'NegociationRecolteController@negociationRecolteStore');
+      Route::get('negociationrecolte/{recolteID}/edit/{negociationRecoleID}', 'NegociationRecolteController@negociationRecolteEdit');
+      Route::post('negociationrecolte/{recolteID}/update/{negociationRecolteID}', 'NegociationRecolteController@negociationRecolteUpdate');
+      Route::get('negociationrecolte/datatable/ajax', 'NegociationRecolteController@datatable');
       
       Route::get('produit/select2/ajax', 'ProduitController@select2');
       

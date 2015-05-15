@@ -115,6 +115,11 @@
                     <!-- /.nav-second-level -->
                 </li>
                 @endif
+                @if(Auth::user()->hasRole('NEGOCIATIONRECOLTE'))
+                <li @if(Request::is('negociationrecolte') or Request::is('negociationrecolte/*/create') or Request::is('recolte/*/edit/*')) class="active" @endif>
+                    <a @if(Request::is('negociationrecolterecolte') or Request::is('negociationrecolte/*/edit/*') or Request::is('negociationrecolte/*/create')) class="active" @endif href="{{ URL::to('negociationrecolte') }}"><i class="fa fa-dashboard fa-fw"></i> Négociations des récoltes </a>
+                </li>
+                @endif
                 @if(Auth::user()->hasRole('ALERT'))
                 <li @if(Request::is('alert') or Request::is('alert/create') or Request::is('alert/*/edit')) class="active" @endif>
                     <a href="#"><i class="fa fa-files-o fa-fw"></i> Alertes<sspan class="fa arrow"></span></a>
