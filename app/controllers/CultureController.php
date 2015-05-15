@@ -9,7 +9,10 @@ class CultureController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		
+        return \View::make('cultures.index', array(
+                    'cultures' => Cultures::get()
+        ));
 	}
 
 
@@ -20,7 +23,7 @@ class CultureController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		        return \View::make('cultures.create');
 	}
 
 
@@ -31,7 +34,33 @@ class CultureController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$validation = Validator::make(\Input::all(), 
+        array(
+          'name' => 'required'
+          ), 
+        array(
+          'name.required' => "Le nom est obligatoire !"
+        )
+      );
+
+      if ($validation->fails()) {
+          return Redirect::to('culture/create')
+              ->withErrors($validation)
+              ->withInput(\Input::all());
+        } else {
+          $culture = new Cultures();
+          $culture->name = \Input::get('name');
+          $culture->description = \Input::get('description');
+          $culture->image = \Input::get('image');
+          
+
+          $culture->save();
+
+          $modifierUrl = URL::to('culture/' . $culture->id . '/modify');
+          Session::flash('success', "<p>Création effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier</a></p>");
+          return Redirect::to('cultures');  
+          
+        }
 	}
 
 
@@ -43,7 +72,8 @@ class CultureController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		return \View::make('cultures.detail')
+                    ->with('culture', Cultures::find($id));
 	}
 
 
@@ -55,7 +85,8 @@ class CultureController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		return \View::make('cultures.edit')
+                    ->with('culture', Cultures::find($id));
 	}
 
 

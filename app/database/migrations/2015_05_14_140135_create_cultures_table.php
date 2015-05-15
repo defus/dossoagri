@@ -12,6 +12,8 @@ class CreateCulturesTable extends Migration {
 	 */
 	public function up()
 	{
+		DB::beginTransaction();
+		
 		Schema::create('cultures', function($t)
 		{
 			$t->increments('id');
@@ -21,6 +23,17 @@ class CreateCulturesTable extends Migration {
 			$t->timestamps();
 		
 		});
+		
+		 DB::table('cultures')
+        ->insert(
+            array(
+                array('name' => 'ble', 'description'=> 'La culture du ble', 'image'=> 'ble.jpg','created_at'=>date('Y-m-d H:m:s')),
+                array('name' => 'mil', 'description'=> 'La culture du mil', 'image'=> 'mil.jpg','created_at'=>date('Y-m-d H:m:s')),
+                array('name' => 'fonio', 'description'=> 'La culture du fonio', 'image'=> 'fonio.jpg','created_at'=>date('Y-m-d H:m:s'))
+            )
+        );
+		
+		 DB::commit();
 	}
 
 	/**
@@ -31,6 +44,7 @@ class CreateCulturesTable extends Migration {
 	public function down()
 	{
 		Schema::drop('cultures');
+		
 	}
 
 }

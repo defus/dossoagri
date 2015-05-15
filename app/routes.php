@@ -29,6 +29,13 @@ Route::group(array('prefix','/'), function() {
       Route::resource('admin/user', 'UserController');
 
       Route::resource('admin/role', 'RoleController');
+      
+      // Cultures 
+      Route::resource('cultures', 'CultureController@index');
+      Route::resource('culture/new', 'CultureController@create');
+      Route::resource('culture/save', 'CultureController@store');
+      Route::get('culture/{id}', array('as'=>'culturedetail', 'uses'=> 'CultureController@show'));
+      Route::get('culture/{id}/modify', array('as'=>'cultureedit', 'uses'=> 'CultureController@edit'));
 
   });
 
