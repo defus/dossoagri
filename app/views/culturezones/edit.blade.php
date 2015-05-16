@@ -160,7 +160,7 @@ $(document).ready(function()
                              </div>
                             <div class="col-xs-3">
                                  <div class='input-group date datetimefromclass' id='datetimefrom'>
-                                    <input type='text' class="form-control" name="datefrom[]" value='{{ date("dd/mm/YY",strtotime($periodvalue->from))}}'' />
+                                    <input type='text' class="form-control" name="datefrom[]" value='{{ date("d/m/Y",strtotime($periodvalue->from))}}'' />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -168,7 +168,7 @@ $(document).ready(function()
                             </div>
                             <div class="col-xs-3">
                                 <div class='input-group date datetimetoclass' id='datetimeto'>
-                                    <input type='text' class="form-control" name="dateto[]" value='{{ date("dd/mm/YY",strtotime($periodvalue->to))}}'' />
+                                    <input type='text' class="form-control" name="dateto[]" value='{{ date("d/m/Y",strtotime($periodvalue->to))}}'' />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
