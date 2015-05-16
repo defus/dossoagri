@@ -76,7 +76,7 @@ function setMarkers(map, locations) {
   // increase in the X direction to the right and in
   // the Y direction down.
   var image = {
-    url: '/assets/images/cultureFlag.png',
+    url: '{{ URL::to('/') }}/assets/images/cultureFlag.png',
     // This marker is 20 pixels wide by 32 pixels tall.
     size: new google.maps.Size(32, 32),
     // The origin for this image is 0,0.
