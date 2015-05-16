@@ -65,6 +65,7 @@ $(document).ready(function() {
                                     
                                     <th>Nom</th>
                                     <th>Coordonnees</th>
+                                     <th>Periodes de Culture</th>
                                     <th>Description</th>
                                     <th class="no-sort" style="width:17px;min-width:75px;max-width:75px;">Actions</th>
                                 </tr>
@@ -74,6 +75,14 @@ $(document).ready(function() {
                                 <tr>
                                      <td>{{$value->name}}</td>
                                      <td>{{$value->longitude}} <br> {{$value->latitude}} <br><a href="#" data-toggle="tooltip" data-html="true" data-placement="right" title="afficher la carte"><i class="fa fa-map-marker fa-2"></i></a></td>
+                                    <td class="col-md-6">
+                                        <ul>
+                                        @foreach($value->CultureZonePeriods as $periodkey => $periodvalue)
+                                           <li><strong>{{$periodvalue->Culture->name}}</strong> &nbsp;&nbsp;&nbsp;&nbsp; [ <strong>{{ date("d M Y",strtotime($periodvalue->from))}}</strong> &agrave; <strong>{{ date("d M Y",strtotime($periodvalue->to))}}</strong>] </li>
+                                        @endforeach
+                                        </ul>
+                                        
+                                    </td>
                                     <td>{{$value->description}}</td>
                                     <td nowrap="nowrap">
                                         <a href="{{ URL::to('culturezone/' . $value->id .'/modify') }}" class="btn btn-sm btn-success"> <i class="fa fa-edit"></i> </a>&nbsp;
