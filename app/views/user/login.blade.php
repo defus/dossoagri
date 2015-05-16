@@ -36,10 +36,10 @@
                 <h1 class="text-center" style="margin-top: 10%">DOSSO Agriculture</h1>
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="/assets/images/dossoagri-logo.png" class="img-responsive" alt="Dosso Agriculture" />
+                        <img src="{{ URL::to('/') }}/assets/images/dossoagri-logo.png" class="img-responsive" alt="Dosso Agriculture" />
                     </div>
                     <div class="col-md-6">
-                        <img src="/assets/images/cipmen.png" class="img-responsive" alt="Logo Organisateur du Hackathon" />
+                        <img src="{{ URL::to('/') }}/assets/images/cipmen.png" class="img-responsive" alt="Logo Organisateur du Hackathon" />
                     </div>
                 </div>
                 <p class="lead text-center">Plateforme d'échange entre les agriculteurs, les acheteurs et les pouvoirs publiques</p>
