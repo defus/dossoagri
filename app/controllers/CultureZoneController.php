@@ -58,6 +58,29 @@ class CultureZoneController extends \BaseController {
 
           $culturezone->save();
 
+		// Save Culture Period Zone 
+		$periods  = Input::only('cultureid','datefrom','dateto');
+
+            $cultureid = $periods['cultureid'];
+            $datefrom = $periods['datefrom'];
+            $dateto = $periods['dateto'];
+            
+
+            foreach( $cultureid as $key => $n ) {
+				$arrayDateFrom = explode("/", $datefrom[$key]);
+				$arrayDateTo = explode("/", $dateto[$key]);
+                DB::table('culturezonecultureperiods')->insert(
+                    array(
+                        'cultureid' => $cultureid[$key],
+                        'from' => $arrayDateFrom[2].'-'.$arrayDateFrom[1].'-'.$arrayDateFrom[0] ,
+                        'to' => $arrayDateTo[2].'-'.$arrayDateTo[1].'-'.$arrayDateTo[0],
+                        'zoneid' => $culturezone->id,
+						'created_at'=>date('Y-m-d H:m:s')
+                    )
+                );
+            }
+
+
           $modifierUrl = URL::to('culturezone/' . $culturezone->id . '/modify');
           Session::flash('success', "<p>Création effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier</a></p>");
           return Redirect::to('culturezones');  
@@ -87,7 +110,8 @@ class CultureZoneController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return \View::make('culturezones.edit')
+		$cultures = DB::table('cultures')->lists('name','id');
+		return \View::make('culturezones.edit', array('cultures' => $cultures))
                     ->with('culturezone', CultureZones::find($id));
 	}
 
@@ -124,6 +148,32 @@ class CultureZoneController extends \BaseController {
           
 
           $culturezone->save();
+		  
+		  
+		  // Save Culture Period Zone 
+		  // Clear Old Data
+		  DB::table('culturezonecultureperiods')->where('zoneid', '=', $culturezone->id)->delete();
+		  
+		$periods  = Input::only('cultureid','datefrom','dateto');
+
+            $cultureid = $periods['cultureid'];
+            $datefrom = $periods['datefrom'];
+            $dateto = $periods['dateto'];
+            
+
+            foreach( $cultureid as $key => $n ) {
+				$arrayDateFrom = explode("/", $datefrom[$key]);
+				$arrayDateTo = explode("/", $dateto[$key]);
+                DB::table('culturezonecultureperiods')->insert(
+                    array(
+                        'cultureid' => $cultureid[$key],
+                        'from' => $arrayDateFrom[2].'-'.$arrayDateFrom[1].'-'.$arrayDateFrom[0] ,
+                        'to' => $arrayDateTo[2].'-'.$arrayDateTo[1].'-'.$arrayDateTo[0],
+                        'zoneid' => $culturezone->id,
+						'created_at'=>date('Y-m-d H:m:s')
+                    )
+                );
+            }
 
           $modifierUrl = URL::to('culturezone/' . $culturezone->id . '/modify');
           Session::flash('success', "<p>Modification effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier</a></p>");

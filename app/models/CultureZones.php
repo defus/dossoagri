@@ -9,4 +9,10 @@
 
       public $timestamps = true;
       
+       // Relationships
+       public function CultureZonePeriods()
+      {
+        return $this->hasMany('culturezonecultureperiods', 'zoneid');
+      }
+    
     }   

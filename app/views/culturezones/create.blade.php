@@ -19,6 +19,17 @@
 {
     font-size: 12px;
 }
+.datetimefrom
+{
+    
+    
+}
+
+.datetimeto
+{
+    
+    
+}
 </style> 
 @endsection
 
@@ -42,6 +53,17 @@ $(document).ready(function()
             newEntry = $(currentEntry.clone()).appendTo(controlForm);
  
         newEntry.find('input').val('');
+        //Enable Date
+        newEntry.find('#datetimefrom').datetimepicker({format: 'DD/MM/YYYY'});
+        newEntry.find('#datetimeto').datetimepicker({format: 'DD/MM/YYYY'});
+        
+        newEntry.find('#datetimefrom').on("dp.change", function (e) {
+            newEntry.find('#datetimeto').data("DateTimePicker").minDate(e.date);
+        });
+        newEntry.find('#datetimeto').on("dp.change", function (e) {
+            newEntry.find('#datetimefrom').data("DateTimePicker").maxDate(e.date);
+        });
+
         controlForm.find('.entry:not(:last) .btn-add')
             .removeClass('btn-add').addClass('btn-remove')
             .removeClass('btn-success').addClass('btn-danger')
@@ -55,8 +77,20 @@ $(document).ready(function()
 		return false;
 	});
     
-      $('#datetimefrom').datetimepicker();
-      $('#datetimeto').datetimepicker();
+      $('#datetimefrom').datetimepicker({
+                 
+                format: 'DD/MM/YYYY'
+            });
+      $('#datetimeto').datetimepicker({
+                 
+                format: 'DD/MM/YYYY'
+            });
+       $("#datetimefrom").on("dp.change", function (e) {
+            $('#datetimeto').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimeto").on("dp.change", function (e) {
+            $('#datetimefrom').data("DateTimePicker").maxDate(e.date);
+        });
 });
 
 </script>
@@ -110,6 +144,8 @@ $(document).ready(function()
                                 <div class="form-group">
                                     <label>Description</label>
                                     {{ Form::textarea('description', Input::old('description'), array('class' => 'form-control')) }}
+                                    
+                                    
                                 </div>
                                 
                                 <div class="control-group" id="fields">
@@ -120,19 +156,19 @@ $(document).ready(function()
                        <div class="row">
                             <div class="col-xs-4">
                                 
-                                {{ Form::select('cultureid', $cultures, Input::old('cultureid'), array('class' => 'form-control' ) ) }}
+                                {{ Form::select('cultureid[]', $cultures, Input::old('cultureid'), array('class' => 'form-control' ) ) }}
                              </div>
                             <div class="col-xs-3">
-                                 <div class='input-group date' id='datetimefrom'>
-                                    <input type='text' class="form-control" />
+                                 <div class='input-group date datetimefromclass' id='datetimefrom'>
+                                    <input type='text' class="form-control" name="datefrom[]" />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
                             </div>
                             <div class="col-xs-3">
-                                <div class='input-group date' id='datetimeto'>
-                                    <input type='text' class="form-control" />
+                                <div class='input-group date datetimetoclass' id='datetimeto'>
+                                    <input type='text' class="form-control" name="dateto[]"/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -151,7 +187,7 @@ $(document).ready(function()
                
             </div>
              <br>
-            <small>Cliquer sur <span class="glyphicon glyphicon-plus gs"></span> pour ajouter une nouvelle p&eacute;riode :)</small>
+            <small>Cliquer sur <span class="glyphicon glyphicon-plus gs"></span> pour ajouter une nouvelle p&eacute;riode</small>
              <br><br><br><br>
         </div>
                                 
