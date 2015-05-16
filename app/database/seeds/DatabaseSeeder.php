@@ -43,7 +43,7 @@ class TestDataSeeder extends Seeder {
         Produit::create(array('Ref' => 'MANGUE', 'Nom' => 'Mangue'));
         
         $mangue = Produit::where('Ref', 'MANGUE')->firstOrFail();
-        
+       
         //Charger les recoltes pour les produit
         $recolte = new Recolte();
         $recolte->Poids = 10;
@@ -55,6 +55,23 @@ class TestDataSeeder extends Seeder {
         $recolte->InitiateurID = $agri1->UtilisateurID;
         $recolte->save();
 
+		// Charger les evenements
+		Evenement::create(array('Nom' => 'Meteo', 'Description' => 'Evenement meteorologique (tempête, pluie, vent, ...)'));
+		Evenement::create(array('Nom' => 'Travaux', 'Description' => 'Travaux de chantiers...'));
+		Evenement::create(array('Nom' => 'Veto', 'Description' => 'Visite veterinaire....'));
+		Evenement::create(array('Nom' => 'Entretien', 'Description' => 'Conseil entretien betail'));
+		Evenement::create(array('Nom' => 'Service regulation', 'Description' => 'Prix des semences, ...'));
+		
+		$evenementTempete = Evenement::where('Nom','Meteo')->firstOrFail();
+		
+		// Charger les alertes
+		$alerte = new Alerte();
+		$alerte->DateCreation = '2015-05-11';
+		$alerte->Message = 'Tempête de sable prevue dans la zone de Dogondoutchi du 18/05 au 21/05 avec tres faible visibilite';
+		$alerte->EvenementID = $evenementTempete->EvenementID;
+		$alerte->InitiateurID = $admin->UtilisateurID;
+		$alerte->save();
+		
         
     }
 

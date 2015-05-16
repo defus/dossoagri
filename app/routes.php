@@ -24,13 +24,21 @@ Route::group(array('prefix','/'), function() {
       Route::get('', 'DashboardController@showDashboard');
       
       Route::resource('recolte', 'RecolteController');
+	  
       Route::get('recolte/datatable/ajax', 'RecolteController@datatable');
       Route::get('recolte/addsms/ajax', 'RecolteController@storeSMS');
-      
-      
-      Route::get('produit/select2/ajax', 'ProduitController@select2');
+	   
+	  Route::get('produit/select2/ajax', 'ProduitController@select2');
       
       Route::get('agriculteur/select2/ajax', 'AgriculteurController@select2');
+      
+	  // Alerte controller.
+	  Route::resource('alerte', 'AlerteController');
+	  Route::get('alerte/datatable/ajax', 'AlerteController@datatable');
+      Route::get('alerte/addsms/ajax', 'AlerteController@storeSMS');
+      
+	  Route::get('evenement/select2/ajax', 'EvenementController@select2');
+
 
       // Admin
       Route::resource('admin/user', 'UserController');
