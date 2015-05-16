@@ -38,10 +38,10 @@ class TestDataSeeder extends Seeder {
         $achat1 = User::where('Username', 'achat1')->firstOrFail();
         
         Roles::create(array('Username' => $part1->Username, 'Role' => 'PARTENAIRE'));
-        Roles::create(array('Username' => $part1->Username, 'Role' => 'RECOLTE')); //Le partenaire gère les recoltes en ligne
-        Roles::create(array('Username' => $part1->Username, 'Role' => 'NEGOCIATIONRECOLTE')); // Le partenaire gère les négociations en ligne
+        Roles::create(array('Username' => $part1->Username, 'Role' => 'RECOLTE')); //Le partenaire gÃ¨re les recoltes en ligne
+        Roles::create(array('Username' => $part1->Username, 'Role' => 'NEGOCIATIONRECOLTE')); // Le partenaire gÃ¨re les nÃ©gociations en ligne
         Roles::create(array('Username' => $achat1->Username, 'Role' => 'ACHETEUR')); 
-        Roles::create(array('Username' => $achat1->Username, 'Role' => 'NEGOCIATIONRECOLTE')); // L'acheteur gère les négociations de recolte en ligne
+        Roles::create(array('Username' => $achat1->Username, 'Role' => 'NEGOCIATIONRECOLTE')); // L'acheteur gÃ¨re les nÃ©gociations de recolte en ligne
         Roles::create(array('Username' => $agri1->Username, 'Role' => 'AGRICULTEUR'));
         
         // Charger les produits
@@ -49,7 +49,7 @@ class TestDataSeeder extends Seeder {
         Produit::create(array('Ref' => 'MANGUE', 'Nom' => 'Mangue'));
         
         $mangue = Produit::where('Ref', 'MANGUE')->firstOrFail();
-        
+       
         //Charger les recoltes pour les produit
         $recolte = new Recolte();
         $recolte->Poids = 10;
@@ -61,7 +61,7 @@ class TestDataSeeder extends Seeder {
         $recolte->InitiateurID = $agri1->UtilisateurID;
         $recolte->save();
         
-        //Charger les négociations de recoltes
+        //Charger les nÃ©gociations de recoltes
         $negociationrecolte = new NegociationRecolte();
         $negociationrecolte->Prix = 10;
         $negociationrecolte->AcheteurID = $achat1->UtilisateurID;
@@ -70,6 +70,23 @@ class TestDataSeeder extends Seeder {
         $negociationrecolte->StatutProposition = 'PREPARATION';
         $negociationrecolte->save();
 
+		// Charger les evenements
+		Evenement::create(array('Nom' => 'Meteo', 'Description' => 'Evenement meteorologique (tempête, pluie, vent, ...)'));
+		Evenement::create(array('Nom' => 'Travaux', 'Description' => 'Travaux de chantiers...'));
+		Evenement::create(array('Nom' => 'Veto', 'Description' => 'Visite veterinaire....'));
+		Evenement::create(array('Nom' => 'Entretien', 'Description' => 'Conseil entretien betail'));
+		Evenement::create(array('Nom' => 'Service regulation', 'Description' => 'Prix des semences, ...'));
+		
+		$evenementTempete = Evenement::where('Nom','Meteo')->firstOrFail();
+		
+		// Charger les alertes
+		$alerte = new Alerte();
+		$alerte->DateCreation = '2015-05-11';
+		$alerte->Message = 'Tempête de sable prevue dans la zone de Dogondoutchi du 18/05 au 21/05 avec tres faible visibilite';
+		$alerte->EvenementID = $evenementTempete->EvenementID;
+		$alerte->InitiateurID = $admin->UtilisateurID;
+		$alerte->save();
+		
         
     }
 

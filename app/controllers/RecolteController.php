@@ -167,7 +167,9 @@ class RecolteController extends \BaseController {
     		$recolte->DateSoumission = $dateSoumission->toDateString();
     		$recolte->StatutSoumission = $submissionData['StatutSoumission'];
     		$recolte->CanalSoumission = $submissionData['CanalSoumission'];
-    		$recolte->InitiateurID = Auth::user()->UtilisateurID;
+    		//$recolte->InitiateurID = Auth::user()->UtilisateurID;
+		$recolte->InitiateurID = $user->UtilisateurID;
+
     
     		$recolte->save();
     		

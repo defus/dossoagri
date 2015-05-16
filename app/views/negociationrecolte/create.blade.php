@@ -12,7 +12,7 @@
 @extends('templates.normal')
 
 {{-- Page title --}}
-@section('title') Ajouter une proposition de prix pour la récolte @stop
+@section('title') Ajouter une proposition de prix pour la production @stop
 
 {{-- Page specific CSS files --}}
 {{-- {{ HTML::style('--Path to css--') }} --}}
@@ -47,7 +47,7 @@ $(document).ready(function() {
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Ajouter une proposition de prix pour la récolte</h1>
+            <h1 class="page-header">Ajouter une proposition de prix pour la production</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -56,7 +56,7 @@ $(document).ready(function() {
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Informations sur la récolte
+                    Informations sur la production
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -71,7 +71,7 @@ $(document).ready(function() {
                                 <p class="form-control-static">{{$recolte->Produit->Ref . ' ' . $recolte->Produit->Nom}}</p>
                             </div>
                             <div class="form-group">
-                                <label>Poids de la récolte (Kg)</label>
+                                <label>Poids de la production (Kg)</label>
                                 <p class="form-control-static">{{$recolte->Poids}}</p>
                             </div>
                             <div class="form-group">
@@ -98,7 +98,7 @@ $(document).ready(function() {
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Merci de remplir le formulaire ci-dessous pour proposer un prix pour la récolte
+                    Merci de remplir le formulaire ci-dessous pour proposer un prix pour la production
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -136,7 +136,7 @@ $(document).ready(function() {
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Liste des propositions de prix pour la récolte
+                    Liste des propositions de prix pour la production
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
