@@ -12,7 +12,7 @@
        // Relationships
        public function CultureZonePeriods()
       {
-        return $this->hasMany('culturezonecultureperiods', 'zoneid');
+        return $this->hasMany('CultureZoneCulturePeriods', 'zoneid');
       }
     
     }   
