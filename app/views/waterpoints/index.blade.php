@@ -19,7 +19,9 @@
 #map
 {
   min-height: 900px;
-  width:85%;        
+  width:85%;    
+  position:absolute;z-index:1;
+    
 }
 
 #page-wrapper
@@ -31,12 +33,28 @@
     min-height: 100%;
     height: 100%;
 }
-#map {
-  position:absolute;z-index:1;
-}
+
+  
 .overlap{
   position: relative;
   z-index:2;
+  
+  
+}
+.offcanvas {
+  position: fixed;
+  top:52px;
+  bottom: 0;
+  right: 0;
+  z-index: 1032;
+  width:448px;
+}
+.searchbox
+{
+  width:448px;
+  height: 64px;
+  right: 0px;
+  left: auto;
   background: white;
   
 }
@@ -54,6 +72,11 @@
  
  div.search-active #search-card .header,div.search-active #search-card .content{-webkit-transform:translate(0, 0);-ms-transform:translate(0, 0);transform:translate(0, 0)}div.search-active #search-card .content{-webkit-box-shadow:0 0 10px rgba(0,0,0,0.1);box-shadow:0 0 10px rgba(0,0,0,0.1)}@media only screen and (min-width: 760px){div.search-active #map-tools{-webkit-transform:translate(-448px, 0);-ms-transform:translate(-448px, 0);transform:translate(-448px, 0)}}
  
+ .search{width:448px}
+ @media only screen and (max-width: 760px){#sub-nav .search span{display:none}}#sub-nav .search form{overflow:hidden}#sub-nav .toggle-search{float:left}
+ @media only screen and (max-width: 760px){#sub-nav .toggle-search .icon-btn{padding-right:0}}#sub-nav .toggle-search span{font-family:"CircularTT-Book", sans-serif;font-size:20px;letter-spacing:-0.016em}#sub-nav .map-menu{top:10px;right:15px;font-size:16px;letter-spacing:-0.01em;color:#333;-webkit-transform:translateY(-20px);-ms-transform:translateY(-20px);transform:translateY(-20px);-webkit-transition:.3s;transition:.3s;-webkit-transition-timing-function:cubic-bezier(0.55, 0, 0.1, 1);transition-timing-function:cubic-bezier(0.55, 0, 0.1, 1);opacity:0;pointer-events:none}
+
+
 </style>
 
 
@@ -127,6 +150,19 @@ function setMarkers(map, locations) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+Menu.prototype.search = function(e) {
+      if (!isWeb && $body.hasClass('menu-active')) {
+        window.menu.close();
+        setTimeout(function() {
+          return Search.open();
+        }, 300);
+      } else {
+        window.mapView.clearActive();
+        Search.open();
+      }
+      return false;
+    };
 </script>
 
 @endsection
@@ -145,14 +181,39 @@ google.maps.event.addDomListener(window, 'load', initialize);
                     <!-- END MAP -->
  
 
-    <div class="card container overlap" id="search-card">
+   
+<!-- BEGIN  -->
+<div class="overlap">
+  <div class="offcanvas">
+    <div class="searchbox">
+      
+      <div class="search">
+<div class="toggle-map-menu btn waves-effect">
+<i class="icon-more_vert"></i>
+</div>
+<div class="toggle-search">
+<div class="btn">
+<i class="fa fa-search"></i>
+</div>
+<span>Rechercher un point d'eau ...</span>
+</div>
+
+</div>
+      
+    </div>
+    
+  </div>
+</div>
+<!-- END  -->
+
+ <div class="card container overlap2" id="search-card">
             <div class="header">
                 <div class="cancel icon-btn waves-effect"><i class="icon-close"></i>
                 </div>
                 <div class="icon-btn">
                     <i class="icon-search"></i>
                 </div>
-                <form action="/api/v1/searches">
+                <form action="/api/v1/searches" class="active">
                     <input autocomplete="off" class="ghost" name="query" placeholder="Search for a location..." type="text">
                 </form>
             </div>
@@ -160,7 +221,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
                 <ul class="toggle-list results" style="display: none"></ul>
             </div>
     </div>
-
    
 
 </div>
