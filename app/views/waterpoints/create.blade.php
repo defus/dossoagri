@@ -124,7 +124,7 @@ $(document).ready(function()
                                     </div>
                                 @endforeach
                             @endif
-                            {{ Form::open(array('url' => URL::to('culturezone/save') , 'role' => 'form')) }}
+                            {{ Form::open(array('url' => URL::to('waterpoint/save') , 'role' => 'form')) }}
                                 <div class="form-group @if($errors->first('name') != '') has-error @endif">
                                     <label>Nom *</label>
                                     {{ Form::text('name', Input::old('name'), array('class' => 'form-control', 'autofocus' => '' ) ) }}

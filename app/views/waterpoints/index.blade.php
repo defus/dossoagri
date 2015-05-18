@@ -19,7 +19,7 @@
 #map
 {
   min-height: 900px;
-  width:100%;        
+  width:85%;        
 }
 
 #page-wrapper
@@ -38,57 +38,22 @@
   position: relative;
   z-index:2;
   background: white;
-  ri
+  
 }
 
-#search-card {
+#search-card{overflow:hidden;-webkit-transition:0s;transition:0s}#search-card form{overflow:hidden}#search-card .header{-webkit-transition:none;transition:none}#search-card .cancel{float:right}#search-card input{margin:0;font-family:"CircularTT-Book", sans-serif;font-size:18px;letter-spacing:-0.01em;padding:17px 0}@media only screen and (min-width: 760px){#search-card input{font-size:20px;letter-spacing:-0.016em;padding:20px 0}}#search-card .results{white-space:nowrap}#search-card .results a{color:#37474f;padding:0 100px 0 24px;overflow:hidden;text-overflow:ellipsis}#search-card .results i{position:absolute;left:0;display:block;font-size:26px;color:#1de9b6}#search-card .results li.active i{display:block}#search-card .results .categories{position:absolute;top:13px;right:16px}@media only screen and (min-width: 760px){#search-card .results .categories{right:24px}}#location-snapshot{background:white}
+
+.card .header{position:absolute;right:0;top:0;left:auto;z-index:10;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;background:#00c1ac;color:#fff;height:56px;-webkit-transform:translate(100%, 0);-ms-transform:translate(100%, 0);transform:translate(100%, 0);-webkit-transition:.3s;transition:.3s;-webkit-transition-timing-function:cubic-bezier(0.55, 0, 0.1, 1);transition-timing-function:cubic-bezier(0.55, 0, 0.1, 1)}body.menu-active .card .header{top:80px}@media only screen and (min-width: 760px){.card .header{height:64px;width:448px}}.card .header h1{padding:0;margin:0;line-height:56px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@media only screen and (min-width: 760px){.card .header h1{line-height:64px}}.card .header .icon-btn{float:left}
+.card
+{
+  
+  
+}
  
-}
-.card .header {
-  position: absolute;
-  right: 0;
-  top: 50px;
-  left: auto;
-  z-index: 10;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  background: #00c1ac;
-  color: #fff;
-  height: 56px;
-  -webkit-transform: translate(100%, 0);
-  -ms-transform: translate(100%, 0);
-  transform: translate(100%, 0);
-  -webkit-transition: .3s;
-  transition: .3s;
-  -webkit-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-}
-.card .content {
-  width: 448px;
-  padding-top: 64px;
-}
-.card .content {
-  background: #fff;
-  position: absolute;
-  z-index: 2;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  top: 0;
-  bottom: 0;
-  left: auto;
-  right: 0;
-  width: 100%;
-  padding-top: 56px;
-  -webkit-transform: translate(100%, 0);
-  -ms-transform: translate(100%, 0);
-  transform: translate(100%, 0);
-  -webkit-transition: .3s;
-  transition: .3s;
-  -webkit-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-}
+ .card .content{background:#fff;position:absolute;z-index:2;overflow:auto;-webkit-overflow-scrolling:touch;top:0;bottom:0;left:auto;right:0;width:100%;padding-top:56px;-webkit-transform:translate(100%, 0);-ms-transform:translate(100%, 0);transform:translate(100%, 0);-webkit-transition:.3s;transition:.3s;-webkit-transition-timing-function:cubic-bezier(0.55, 0, 0.1, 1);transition-timing-function:cubic-bezier(0.55, 0, 0.1, 1)}@media only screen and (min-width: 760px){.card .content{width:448px;padding-top:64px}body.menu-active .card .content{padding-top:144px}}#map-card .card .content{top:0;overflow:display}
+ 
+ div.search-active #search-card .header,div.search-active #search-card .content{-webkit-transform:translate(0, 0);-ms-transform:translate(0, 0);transform:translate(0, 0)}div.search-active #search-card .content{-webkit-box-shadow:0 0 10px rgba(0,0,0,0.1);box-shadow:0 0 10px rgba(0,0,0,0.1)}@media only screen and (min-width: 760px){div.search-active #map-tools{-webkit-transform:translate(-448px, 0);-ms-transform:translate(-448px, 0);transform:translate(-448px, 0)}}
+ 
 </style>
 
 
@@ -99,8 +64,8 @@
 
 function initialize() {
   var mapOptions = {
-    zoom: 10,
-    center: new google.maps.LatLng(13.525120, 2.107531)
+    zoom: 7,
+    center: new google.maps.LatLng(15.53837592629206, 5.2679443359375)
   }
   var map = new google.maps.Map(document.getElementById('map'),
                                 mapOptions);
@@ -130,13 +95,13 @@ function setMarkers(map, locations) {
   // increase in the X direction to the right and in
   // the Y direction down.
   var image = {
-    url: '/assets/images/cultureFlag.png',
+    url: '/assets/images/watermapmarker.png',
     // This marker is 20 pixels wide by 32 pixels tall.
-    size: new google.maps.Size(32, 32),
+    size: new google.maps.Size(34, 42),
     // The origin for this image is 0,0.
     origin: new google.maps.Point(0,0),
     // The anchor for this image is the base of the flagpole at 0,32.
-    anchor: new google.maps.Point(0, 32)
+    anchor: new google.maps.Point(0, 42)
   };
   // Shapes define the clickable region of the icon.
   // The type defines an HTML &lt;area&gt; element 'poly' which
@@ -178,8 +143,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
                     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
                     <div id="map"></div>
                     <!-- END MAP -->
+ 
 
-     
     <div class="card container overlap" id="search-card">
             <div class="header">
                 <div class="cancel icon-btn waves-effect"><i class="icon-close"></i>
@@ -195,6 +160,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                 <ul class="toggle-list results" style="display: none"></ul>
             </div>
     </div>
+
    
 
 </div>

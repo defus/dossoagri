@@ -66,7 +66,7 @@ class WaterPointController extends \BaseController {
             $dateto = $periods['dateto'];
             
 
-            foreach( $cultureid as $key => $n ) {
+            foreach( $datefrom as $key => $n ) {
 				$arrayDateFrom = explode("/", $datefrom[$key]);
 				$arrayDateTo = explode("/", $dateto[$key]);
                 DB::table('waterpointperiods')->insert(
@@ -160,7 +160,7 @@ class WaterPointController extends \BaseController {
             $dateto = $periods['dateto'];
             
 
-            foreach( $cultureid as $key => $n ) {
+            foreach( $datefrom as $key => $n ) {
 				$arrayDateFrom = explode("/", $datefrom[$key]);
 				$arrayDateTo = explode("/", $dateto[$key]);
                 DB::table('waterpointperiods')->insert(
