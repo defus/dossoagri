@@ -58,6 +58,15 @@ Route::group(array('prefix','/'), function() {
       Route::get('culturezone/{id}', array('as'=>'culturezonedetail', 'uses'=> 'CultureZoneController@show'));
       Route::get('culturezone/{id}/modify', array('as'=>'culturezoneedit', 'uses'=> 'CultureZoneController@edit'));
       Route::resource('culturezone/update', 'CultureZoneController@update');
+      
+      // Water Point
+      Route::resource('waterpoints', 'WaterPointController@index');
+      Route::resource('waterpoint/new', 'WaterPointController@create');
+      Route::resource('waterpoint/save', 'WaterPointController@store');
+      Route::get('waterpoint/{id}', array('as'=>'waterpointdetail', 'uses'=> 'WaterPointController@show'));
+      Route::get('waterpoint/{id}/modify', array('as'=>'waterpointedit', 'uses'=> 'WaterPointController@edit'));
+      Route::resource('waterpoint/update', 'WaterPointController@update');
+
 
   });
 

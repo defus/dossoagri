@@ -164,6 +164,14 @@
                     <!-- /.nav-second-level -->
                 </li>
 				<!-- End Zone de Culture -->
+                
+               <!-- Point d'eau -->
+                <li @if(Request::is('waterpoints') or Request::is('waterpoints') or Request::is('waterpoint/*') or Request::is('waterpoint/*')) class="active" @endif >
+                    <a @if(Request::is('waterpoints') or Request::is('waterpoint/*')) class="active" @endif   href="{{ URL::to('waterpoints') }}"><i class="fa fa-sitemap fa-fw"></i>Points d'Eau<sspan class="fa arrow"></span></a>
+                     
+                    <!-- /.nav-second-level -->
+                </li>
+				<!-- End Point d'eau' -->
             </ul>
         </div>
         <!-- /.sidebar-collapse -->
