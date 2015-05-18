@@ -12,7 +12,7 @@
 @extends('templates.normal')
 
 {{-- Page title --}}
-@section('title') Ajouter une récolte @stop
+@section('title') Ajouter une production @stop
 
 {{-- Page specific CSS files --}}
 {{-- {{ HTML::style('--Path to css--') }} --}}
@@ -132,7 +132,7 @@ $(document).ready(function() {
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Ajouter une récolte </h1>
+            <h1 class="page-header">Ajouter une production </h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -174,11 +174,11 @@ $(document).ready(function() {
                                     {{ $errors->first('DateSoumission', '<span class="error">:message</span>' ) }}
                                 </div>
                                 <div class="form-group">
-                                    <label>Statut de la récolte</label>
+                                    <label>Statut de la production</label>
                                     {{ Form::select('StatutSoumission', $statutSoumissions, Input::old('StatutSoumission'), array('class' => 'form-control')) }}
                                 </div>
                                 <div class="form-group">
-                                    <label>Canal de soumission de la récolte</label>
+                                    <label>Canal de soumission de la production</label>
                                     {{ Form::select('CanalSoumission', $canalSoumissions, Input::old('CanalSoumission'), array('class' => 'form-control')) }}
                                 </div>
                                 {{ Form::submit('Enregistrer', array('class'=>'btn btn-primary')) }}

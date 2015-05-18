@@ -88,7 +88,7 @@
         </li>
         <!-- /.dropdown -->
         <li >
-            <img alt="Brand" src="/assets/images/dossoagri-logo.png" style="height:35px;width:35px;" >
+            <img alt="Brand" src="{{ URL::to('/') }}/assets/images/dossoagri-logo.png" style="height:35px;width:35px;" >
             
         </li>
         <!-- /.dropdown -->
@@ -101,15 +101,29 @@
                 <li>
                     <a @if(Request::is('/')) class="active" @endif href="{{ URL::to('') }}"><i class="fa fa-dashboard fa-fw"></i> Tableau de bord</a>
                 </li>
-                @if(Auth::user()->hasRole('RECOLTE'))
-                <li @if(Request::is('recolte') or Request::is('recolte/create') or Request::is('recolte/*/edit')) class="active" @endif>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Récoltes<sspan class="fa arrow"></span></a>
+                @if(Auth::user()->hasRole('ALERT'))
+                <li @if(Request::is('alerte') or Request::is('alerte/create') or Request::is('alerte/*/edit')) class="active" @endif>
+                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Alertes<sspan class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a @if(Request::is('recolte') or Request::is('recolte/*/edit')) class="active" @endif href="{{ URL::to('recolte') }}">Liste des récoltes enregistrées</a>
+                            <a @if(Request::is('alerte') or Request::is('alerte/*/edit')) class="active" @endif href="{{ URL::to('alerte') }}">Liste des alertes enregistrées</a>
                         </li>
                         <li>
-                            <a @if(Request::is('recolte/create')) class="active" @endif href="{{ URL::to('recolte/create') }}">Ajouter une récolte</a>
+                            <a @if(Request::is('alerte/create')) class="active" @endif href="{{ URL::to('alerte/create') }}">Ajouter une alerte</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                @endif
+                @if(Auth::user()->hasRole('RECOLTE'))
+                <li @if(Request::is('recolte') or Request::is('recolte/create') or Request::is('recolte/*/edit')) class="active" @endif>
+                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Productions<sspan class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a @if(Request::is('recolte') or Request::is('recolte/*/edit')) class="active" @endif href="{{ URL::to('recolte') }}">Liste des productions enregistrées</a>
+                        </li>
+                        <li>
+                            <a @if(Request::is('recolte/create')) class="active" @endif href="{{ URL::to('recolte/create') }}">Ajouter une production</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
@@ -117,23 +131,24 @@
                 @endif
                 @if(Auth::user()->hasRole('NEGOCIATIONRECOLTE'))
                 <li @if(Request::is('negociationrecolte') or Request::is('negociationrecolte/*/create') or Request::is('recolte/*/edit/*')) class="active" @endif>
-                    <a @if(Request::is('negociationrecolterecolte') or Request::is('negociationrecolte/*/edit/*') or Request::is('negociationrecolte/*/create')) class="active" @endif href="{{ URL::to('negociationrecolte') }}"><i class="fa fa-dashboard fa-fw"></i> Négociations des récoltes </a>
+                    <a @if(Request::is('negociationrecolterecolte') or Request::is('negociationrecolte/*/edit/*') or Request::is('negociationrecolte/*/create')) class="active" @endif href="{{ URL::to('negociationrecolte') }}"><i class="fa fa-dashboard fa-fw"></i> Négociations des productions </a>
                 </li>
                 @endif
-                @if(Auth::user()->hasRole('ALERT'))
-                <li @if(Request::is('alert') or Request::is('alert/create') or Request::is('alert/*/edit')) class="active" @endif>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Alertes<sspan class="fa arrow"></span></a>
+                <!-- Zone de Culture -->
+                <li @if(Request::is('cultures') or Request::is('culturezones') or Request::is('culture/*') or Request::is('culturezone/*')) class="active" @endif >
+                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> Zone de Culture<sspan class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a @if(Request::is('alert') or Request::is('alert/*/edit')) class="active" @endif href="{{ URL::to('alert') }}">Liste des alertes enregistrées</a>
+                            <a @if(Request::is('culturezones') or Request::is('culturezone/*')) class="active" @endif   href="{{ URL::to('culturezones') }}">Liste des Zones</a>
                         </li>
                         <li>
-                            <a @if(Request::is('alert/create')) class="active" @endif href="{{ URL::to('alert/create') }}">Ajouter une alerte</a>
+                            <a  @if(Request::is('cultures') or Request::is('culture/*') ) class="active" @endif  href="{{ URL::to('cultures') }}">Liste des Cultures</a>
                         </li>
+                       
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
-                @endif
+				<!-- End Zone de Culture -->
                 @if(Auth::user()->hasRole('ADMIN'))
                 <li @if(Request::is('admin/user') or Request::is('admin/user/create') or Request::is('admin/user/*/edit')) class="active" @endif>
                     <a href="#"><i class="fa fa-sitemap fa-fw"></i> Utilisateurs<sspan class="fa arrow"></span></a>
@@ -172,6 +187,7 @@
                     <!-- /.nav-second-level -->
                 </li>
 				<!-- End Point d'eau' -->
+
             </ul>
         </div>
         <!-- /.sidebar-collapse -->

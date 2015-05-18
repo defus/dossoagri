@@ -52,8 +52,8 @@ $(document).ready(function() {
                             <i class="fa fa-comments fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
-                            <div>Recoltes soumises</div>
+                            <div class="huge">1</div>
+                            <div>Productions soumises</div>
                         </div>
                     </div>
                 </div>
@@ -74,12 +74,12 @@ $(document).ready(function() {
                             <i class="fa fa-tasks fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">12</div>
-                            <div>Négociaions en cours</div>
+                            <div class="huge">1</div>
+                            <div>Négociaions de production en cours</div>
                         </div>
                     </div>
                 </div>
-                <a href="{{ URL::to('compteur') }}">
+                <a href="{{ URL::to('negociationrecolte') }}">
                     <div class="panel-footer">
                         <span class="pull-left">Voir détails</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -96,12 +96,12 @@ $(document).ready(function() {
                             <i class="fa fa-shopping-cart fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
-                            <div>Alertes</div>
+                            <div class="huge">4</div>
+                            <div>Zones de cultures</div>
                         </div>
                     </div>
                 </div>
-                <a href="{{ URL::to('patrimoine') }}">
+                <a href="{{ URL::to('culturezones') }}">
                     <div class="panel-footer">
                         <span class="pull-left">Voir détails</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

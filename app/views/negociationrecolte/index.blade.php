@@ -12,7 +12,7 @@
 @extends('templates.normal')
 
 {{-- Page title --}}
-@section('title') Liste des négociations des récoltes @stop
+@section('title') Liste des négociations des productions @stop
 
 {{-- Page specific CSS files --}}
 {{-- {{ HTML::style('--Path to css--') }} --}}
@@ -102,7 +102,7 @@ $(document).ready(function() {
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Liste des récoltes pour lesquelles on peut encore proposer un prix</h1>
+            <h1 class="page-header">Liste des productions pour lesquelles on peut encore proposer un prix</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -111,7 +111,7 @@ $(document).ready(function() {
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Liste des récoltes à négocier
+                    Liste des productions à négocier
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">

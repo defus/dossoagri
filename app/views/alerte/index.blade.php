@@ -3,8 +3,8 @@
  * login.blade.php 
  * {File description}
  * 
- * @author defus
- * @created Nov 13, 2014
+ * @author alompo
+ * @created May 2015
  * 
  */
 ?>
@@ -12,7 +12,7 @@
 @extends('templates.normal')
 
 {{-- Page title --}}
-@section('title') Liste des productions @stop
+@section('title') Liste des alertes @stop
 
 {{-- Page specific CSS files --}}
 {{-- {{ HTML::style('--Path to css--') }} --}}
@@ -35,30 +35,39 @@ $(document).ready(function() {
         "dom": 'T<"clear">lfrtip',
         "processing": true,
         "serverSide": true,
-        "ajax": "{{ URL::to('recolte/datatable/ajax') }}",
+        "ajax": "{{ URL::to('alerte/datatable/ajax') }}",
         "columns": [
-            {"name": "recolte.Poids", "targets": 0, "data": "Poids", className: "text-right"},
-            {"name": "recolte.StatutSoumission", "targets": 1, "data": "StatutSoumission", "type": "text", className: "text-left"},
-            {"name": "recolte.CanalSoumission", "targets": 2, "data": "CanalSoumission", "type": "text", className: "text-left"},
-            {"name": "recolte.DateSoumission", "targets": 3, "data": "DateSoumission", "type": "date", className: "text-right"},
-            {"name": "Action", "targets": 4, "searchable": false, "orderable": false, "width":"60px"}
+            
+            {"name": "alerte.Message", "targets": 0, "data": "Message", "type": "text", className: "text-left"},
+            {"name": "alerte.DateCreation", "targets": 1, "data": "DateCreation", "type": "date", className: "text-left"},
+            {"name": "Action", "targets": 2, "searchable": false, "orderable": false, "width":"60px"}
         ],
         "columnDefs": [
             {
                 "render": function ( data, type, row ) {
-                    return row.Poids + ' (Kg)';
+                    return row.Message;
                 },
                 "type": "html",
                 "targets": 0
-            },{
+            },
+			
+			{
+                "render": function ( data, type, row ) {
+                    return row.DateCreation;
+                },
+                "type": "html",
+                "targets": 1
+            },
+			
+			{
                 "render": function ( data, type, row ) {
                     return  '<div class="pull-right">' +
-                                '<a href="' + baseUrl + '/recolte/' + row.RecolteID + '/edit" class="btn btn-xs btn-success"> <i class="fa fa-edit"></i></a> &nbsp;' +
-                                '<form method="POST" action="'+baseUrl + '/recolte/' + row.RecolteID + '" accept-charset="UTF-8" class="pull-right"><input name="_token" type="hidden" value="VgCwyBAy8xM1DsqNDnyi5VBl8x1fUNixo4h3NCcY"><input name="_method" type="hidden" value="DELETE"><button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></button></form>'+
+                                '<a href="' + baseUrl + '/alerte/' + row.AlerteID + '/edit" class="btn btn-xs btn-success"> <i class="fa fa-edit"></i></a> &nbsp;' +
+                                '<form method="POST" action="'+baseUrl + '/alerte/' + row.AlerteID + '" accept-charset="UTF-8" class="pull-right"><input name="_token" type="hidden" value="VgCwyBAy8xM1DsqNDnyi5VBl8x1fUNixo4h3NCcY"><input name="_method" type="hidden" value="DELETE"><button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></button></form>'+
                             '</div>';
                 },
                 "type": "html",
-                "targets": 4
+                "targets": 2
             },
             //{ "visible": false,  "targets": [ 3 ] }
         ],
@@ -79,7 +88,7 @@ $(document).ready(function() {
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Productions <a href="{{ URL::to('recolte/create') }}" class="btn btn-success pull-right">Ajouter une production</a></h1>
+            <h1 class="page-header">Alertes <a href="{{ URL::to('alerte/create') }}" class="btn btn-success pull-right">Ajouter une alerte</a></h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -88,7 +97,7 @@ $(document).ready(function() {
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Liste des productions saisies
+                    Liste des alertes saisies
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -103,10 +112,8 @@ $(document).ready(function() {
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>Poids&nbsp;</th>
-                                    <th>Statut&nbsp;</th>
-                                    <th>Canal&nbsp;</th>
-                                    <th>Date de soumission&nbsp;</th>
+                                    <th>Message&nbsp;</th>
+                                    <th>Date de creation&nbsp;</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
