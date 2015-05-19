@@ -59,6 +59,37 @@
   
 }
 
+#map-tools
+{
+   position: fixed;
+  bottom: 10px;
+
+  z-index: 1032;
+  width:64px;
+
+  height: 64px;
+  left: 10px;
+  right: auto;
+ 
+  margin: 0 0 0 250px;
+  
+}
+
+#map-tools a {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  text-align: center;
+  line-height: 70px;
+  background: #00c1ac;
+  border-radius: 100%;
+  color: #fff;
+  background: rgba(0,193,172,0.7);
+  -webkit-transition: .3s;
+  transition: .3s;
+  bottom: 10px;
+}
+
 #search-card{overflow:hidden;-webkit-transition:0s;transition:0s}#search-card form{overflow:hidden}#search-card .header{-webkit-transition:none;transition:none}#search-card .cancel{float:right}#search-card input{margin:0;font-family:"CircularTT-Book", sans-serif;font-size:18px;letter-spacing:-0.01em;padding:17px 0}@media only screen and (min-width: 760px){#search-card input{font-size:20px;letter-spacing:-0.016em;padding:20px 0}}#search-card .results{white-space:nowrap}#search-card .results a{color:#37474f;padding:0 100px 0 24px;overflow:hidden;text-overflow:ellipsis}#search-card .results i{position:absolute;left:0;display:block;font-size:26px;color:#1de9b6}#search-card .results li.active i{display:block}#search-card .results .categories{position:absolute;top:13px;right:16px}@media only screen and (min-width: 760px){#search-card .results .categories{right:24px}}#location-snapshot{background:white}
 
 .card .header{position:absolute;right:0;top:0;left:auto;z-index:10;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;background:#00c1ac;color:#fff;height:56px;-webkit-transform:translate(100%, 0);-ms-transform:translate(100%, 0);transform:translate(100%, 0);-webkit-transition:.3s;transition:.3s;-webkit-transition-timing-function:cubic-bezier(0.55, 0, 0.1, 1);transition-timing-function:cubic-bezier(0.55, 0, 0.1, 1)}body.menu-active .card .header{top:80px}@media only screen and (min-width: 760px){.card .header{height:64px;width:448px}}.card .header h1{padding:0;margin:0;line-height:56px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@media only screen and (min-width: 760px){.card .header h1{line-height:64px}}.card .header .icon-btn{float:left}
@@ -206,7 +237,7 @@ Menu.prototype.search = function(e) {
 </div>
 <!-- END  -->
 
- <div class="card container overlap2" id="search-card">
+ <div class="card container overlap" id="search-card">
             <div class="header">
                 <div class="cancel icon-btn waves-effect"><i class="icon-close"></i>
                 </div>
@@ -221,7 +252,15 @@ Menu.prototype.search = function(e) {
                 <ul class="toggle-list results" style="display: none"></ul>
             </div>
     </div>
-   
+  <!-- MAP TOOLS -->
+  <div id="map-tools">
+
+
+<a class="zoom_out waves-effect waves-circle" href="{{ URL::to('waterpoint/new') }}">
+<i class="fa fa-map-marker fa-3x"></i>
+</a>
+</div>
+  <!-- MAP TOOLS -->
 
 </div>
 <!-- /#page-wrapper -->
