@@ -28,7 +28,8 @@ Route::group(array('prefix','/'), function() {
       Route::resource('recolte', 'RecolteController');  
       Route::get('recolte/datatable/ajax', 'RecolteController@datatable');
       
-	   
+	     Route::resource('admin/produit', 'ProduitController');
+       Route::get('admin/produit/datatable/ajax', 'ProduitController@datatable');
 	     Route::get('produit/select2/ajax', 'ProduitController@select2');
       
       Route::resource('negociationrecolte', 'NegociationRecolteController');

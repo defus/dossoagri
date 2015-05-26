@@ -18,7 +18,6 @@ class CreateRecolteTable extends Migration {
 	        $table->increments('ProduitID');
 	        $table->string('Ref', 200);
 			$table->string('Nom', 2000);
-			$table->timestamps();
 	      });
 	    }
 		

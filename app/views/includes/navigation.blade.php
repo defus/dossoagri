@@ -162,6 +162,18 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                <li @if(Request::is('admin/produit') or Request::is('admin/produit/create') or Request::is('admin/produit/*/edit')) class="active" @endif>
+                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> Produits<sspan class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a @if(Request::is('admin/produit') or Request::is('admin/produit/*/edit')) class="active" @endif href="{{ URL::to('admin/produit') }}">Liste des produits</a>
+                        </li>
+                        <li>
+                            <a @if(Request::is('admin/produit/create')) class="active" @endif href="{{ URL::to('admin/produit/create') }}">Ajouter un produit</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
                 @endif
 				
             </ul>
