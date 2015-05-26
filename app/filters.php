@@ -41,6 +41,8 @@ Route::filter('auth', function()
 	{
 		if (Request::ajax())
 		{
+			$pathInfo = Request::getPathInfo();
+			Log::warning("401 - Unauthorized", array('path' => $pathInfo));
 			return Response::make('Unauthorized', 401);
 		}
 		else
@@ -50,7 +52,7 @@ Route::filter('auth', function()
 	}else{
 		$securityCheck = new SecurityCheck(Facade::getFacadeApplication());
 
-		$securityCheck->routeNeedsRole( 'alert*', array('ALERT') );
+		$securityCheck->routeNeedsRole( 'alerte*', array('ALERT') );
 		
 		$securityCheck->routeNeedsRole( 'recolte*', array('RECOLTE') );
 		

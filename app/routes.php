@@ -40,13 +40,12 @@ Route::group(array('prefix','/'), function() {
 
       Route::get('agriculteur/select2/ajax', 'AgriculteurController@select2');
 
+  	  // Alerte controller.
+  	  Route::resource('alerte', 'AlerteController');
+  	  Route::get('alerte/datatable/ajax', 'AlerteController@datatable');
+      Route::get('alerte/addsms/ajax', 'AlerteController@storeSMS');
       
-	  // Alerte controller.
-	  Route::resource('alerte', 'AlerteController');
-	  Route::get('alerte/datatable/ajax', 'AlerteController@datatable');
-    Route::get('alerte/addsms/ajax', 'AlerteController@storeSMS');
-      
-	  Route::get('evenement/select2/ajax', 'EvenementController@select2');
+  	  Route::get('evenement/select2/ajax', 'EvenementController@select2');
 
 
       // Admin

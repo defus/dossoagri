@@ -6,8 +6,6 @@ class AlerteController extends \BaseController {
   
     public function index()
     {
-      $baseid = Auth::user()->BaseID; 
-
       return  View::make('alerte.index');
     }
 
@@ -23,7 +21,7 @@ class AlerteController extends \BaseController {
 
       $query = DB::table('alerte')
         ->leftJoin('evenement', 'evenement.EvenementID', '=', 'alerte.EvenementID')
-		 ->leftJoin('utilisateur', 'utilisateur.UtilisateurID', '=', 'alerte.initiateurID');
+        ->leftJoin('utilisateur', 'utilisateur.UtilisateurID', '=', 'alerte.initiateurID');
         
 
       $total = $query->count();
