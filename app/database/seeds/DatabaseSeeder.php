@@ -27,10 +27,10 @@ class TestDataSeeder extends Seeder {
         DB::table('roles')->delete();
         DB::table('utilisateur')->delete();
 
-        User::create(array('Mail' => 'admin@dossoagri.com', 'Username' => 'admin', 'password' => Hash::make('admin'), 'nom' => 'Admin', 'prenom' => 'Utilisateur', 'telephone' => '22793339999', 'isadmin' => 1));
-        User::create(array('Mail' => 'agri1@dossoagri.com', 'Username' => 'agri1', 'password' => Hash::make('agri1'), 'nom' => 'agri1', 'prenom' => 'agri1', 'telephone' => '22790339999', 'isadmin' => 0));
-		User::create(array('Mail' => 'achat1@dossoagri.com', 'Username' => 'achat1', 'password' => Hash::make('achat1'), 'nom' => 'achat1', 'prenom' => 'achat1', 'telephone' => '22794339999', 'isadmin' => 0));
-		User::create(array('Mail' => 'part1@dossoagri.com', 'Username' => 'part1', 'password' => Hash::make('part1'), 'nom' => 'part1', 'prenom' => 'part1', 'telephone' => '22797339999', 'isadmin' => 0));
+        User::create(array('Mail' => 'admin@agritech.com', 'Username' => 'admin', 'password' => Hash::make('admin'), 'nom' => 'Admin', 'prenom' => 'Utilisateur', 'telephone' => '22793339999', 'isadmin' => 1));
+        User::create(array('Mail' => 'agri1@agritech.com', 'Username' => 'agri1', 'password' => Hash::make('agri1'), 'nom' => 'agri1', 'prenom' => 'agri1', 'telephone' => '22790339999', 'isadmin' => 0));
+		User::create(array('Mail' => 'achat1@agritech.com', 'Username' => 'achat1', 'password' => Hash::make('achat1'), 'nom' => 'achat1', 'prenom' => 'achat1', 'telephone' => '22794339999', 'isadmin' => 0));
+		User::create(array('Mail' => 'part1@agritech.com', 'Username' => 'part1', 'password' => Hash::make('part1'), 'nom' => 'part1', 'prenom' => 'part1', 'telephone' => '22797339999', 'isadmin' => 0));
         
         $admin = User::where('Username', 'admin')->firstOrFail();
         $part1 = User::where('Username', 'part1')->firstOrFail();

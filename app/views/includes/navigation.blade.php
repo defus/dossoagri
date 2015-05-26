@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ URL::to('/') }}"> DOSSO Agriculture (béta)</a>
+        <a class="navbar-brand" href="{{ URL::to('/') }}"> AGRITECH (béta)</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -88,7 +88,7 @@
         </li>
         <!-- /.dropdown -->
         <li >
-            <img alt="Brand" src="{{ URL::to('/') }}/assets/images/dossoagri-logo.png" style="height:35px;width:35px;" >
+            <img alt="Brand" src="{{ URL::to('/') }}/assets/images/agritech-logo.png" style="height:35px;width:35px;" >
             
         </li>
         <!-- /.dropdown -->

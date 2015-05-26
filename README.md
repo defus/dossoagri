@@ -1,17 +1,18 @@
 -[![Build Status](https://travis-ci.org/defus/dossoagri.svg?branch=master)](https://travis-ci.org/defus/dossoagri)		
 -
 
-# dossoagri
-Bienvenu sur le site du projet DOSSIAGRI
+# AGRITECH
+Bienvenu sur le site du projet AGRITECH
 
 ## Personnes concernées
-DOSSO Agri est une initiative qui a pour but de mettre en relation :
+AGRITECH est une initiative qui a pour but de mettre en relation :
 
-* Les petits agriculteurs ;
-* Les acheteur finaux ;
+* Les agriculteurs ;
+* Les acheteur pour la vente (finaux) ;
+* Les partenaires interessés d'avoir des données consolidées sur l'activité agricole d'une région données sous forme de rapport et de base de données ;
 * Et les pouvoir publics et ONG qui travaillent dans l'agriculture.
 
-## Objectifs de la plateforme DOSSOAGRI
+## Objectifs de la plateforme AGRITECH
 Aujourd'hui, la plateforme permet de :
 * Aider les agriculteurs à réguler leur production en fonction du climat et du marché
 * Cartographier les zones agricoles exploitables du Niger avec les caractéristiques liées a la zone et proposer des types de culture propice a la zone
@@ -23,7 +24,8 @@ Pour l'architecture, rien de mieux que les [micro services] Il faut faire plein 
 Du coup pour le premier pavé voici la vision (à mettre-à-jour) :
 * Application SMS pour les fonctionnalités agriculteurs ;
 * Application Web pour les internautes (négociation de prix des recoltes postés) ;
-* Application autre pour le reste (par exemple le template WPF d'Alain )
+* Application Mobile (Smartphone) pour la localisation des poinst d'eaux et des zones agricoles ;
+* Autre application pour le reste.
 
 ## Production
 
@@ -39,7 +41,7 @@ composer update
 ```
 * Faire pointer Apache sur le repertoire `/public`
 * Dans le fichier `.htaccess` qui se trouve dans le repertoire `/public`, 
-   * utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire `/dossoagri`)
+   * utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire `/agritech`)
 ```
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
@@ -54,7 +56,7 @@ composer update
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ /dossoagri/index.php [L]
+    RewriteRule ^ /agritech/index.php [L]
 </IfModule>
 ```
    * utiliser la sytaxe suivante (dans le cas où le site est déployé dans le repertoire `/`)

@@ -34,7 +34,7 @@ ClassLoader::addDirectories(array(
 |
 */
 
-Log::useFiles(storage_path().'/logs/dossoagri.log');
+Log::useFiles(storage_path().'/logs/agritech.log');
 
 /*
 |--------------------------------------------------------------------------

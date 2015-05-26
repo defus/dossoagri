@@ -33,10 +33,10 @@
     <div class="row" style="margin-top:10%">
         <div class="col-md-8">
             <div class="jumbotron" >
-                <h1 class="text-center" style="margin-top: 10%">DOSSO Agriculture</h1>
+                <h1 class="text-center" style="margin-top: 10%">AGRITECH</h1>
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="{{ URL::to('/') }}/assets/images/dossoagri-logo.png" class="img-responsive" alt="Dosso Agriculture" />
+                        <img src="{{ URL::to('/') }}/assets/images/agritech-logo.png" class="img-responsive" alt="AGRITECH" />
                     </div>
                     <div class="col-md-6">
                         <img src="{{ URL::to('/') }}/assets/images/cipmen.png" class="img-responsive" alt="Logo Organisateur du Hackathon" />
