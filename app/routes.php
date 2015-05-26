@@ -54,6 +54,8 @@ Route::group(array('prefix','/'), function() {
 
       Route::resource('admin/role', 'RoleController');
       
+      Route::resource('admin/settings', 'SettingsController');
+      
       // Cultures 
       Route::resource('cultures', 'CultureController@index');
       Route::resource('culture/new', 'CultureController@create');

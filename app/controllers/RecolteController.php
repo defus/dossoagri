@@ -172,7 +172,8 @@ class RecolteController extends \BaseController {
 
     		$recolte->save();
     		
-    		$ws = New SMSWebServices(Facade::getFacadeApplication());
+    		$wsf = new SMSWebServicesFactory(Facade::getFacadeApplication());
+        $ws = $wsf->getSMSWebServices(Config::get('agritech.app.sms.gateway'));
     		$msg = "Votre recolte de " . $submissionData['Poids'] . " KG de " . $submissionData['ProduitID'] . " a bien ete enregistree. Merci."; 
     		$ws->sendmsg($sender, $msg);
     

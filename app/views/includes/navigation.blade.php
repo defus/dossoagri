@@ -174,6 +174,9 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                <li @if(Request::is('admin/settings')) class="active" @endif>
+                    <a @if(Request::is('admin/settings')) class="active" @endif href="{{ URL::to('admin/settings') }}"><i class="fa fa-dashboard fa-fw"></i> Paramètres </a>
+                </li>
                 @endif
 				
             </ul>
