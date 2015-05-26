@@ -18,7 +18,7 @@ class RecolteSMSTest extends TestCase {
     $response = $this->call('GET', '/recolte/addsms/ajax', $dataSubmission);
 
     //Vérifier la redirection vers la vue
-    $this->assertRedirectedTo('recolte');
+    $this->assertRedirectedTo('');
     $this->assertSessionHas('success');
     
     //Vérifier que la réponse contient l'url  pour modification

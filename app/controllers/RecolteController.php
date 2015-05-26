@@ -168,9 +168,8 @@ class RecolteController extends \BaseController {
     		$recolte->StatutSoumission = $submissionData['StatutSoumission'];
     		$recolte->CanalSoumission = $submissionData['CanalSoumission'];
     		//$recolte->InitiateurID = Auth::user()->UtilisateurID;
-		$recolte->InitiateurID = $user->UtilisateurID;
+        $recolte->InitiateurID = $user->UtilisateurID;
 
-    
     		$recolte->save();
     		
     		$ws = New SMSWebServices(Facade::getFacadeApplication());
@@ -179,7 +178,7 @@ class RecolteController extends \BaseController {
     
     		$modifierUrl = URL::to('recolte/' . $recolte->RecolteID . '/edit');
     		Session::flash('success', "<p>Création de la récolte effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier la récolte</a></p>");
-    		return Redirect::to('recolte');
+    		return Redirect::to('');
     	}
     }
     

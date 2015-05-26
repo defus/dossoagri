@@ -17,8 +17,8 @@ class NegociationRecolteController extends \BaseController {
       $order = \Input::get('order');
       $columns = \Input::get('columns');
 
-      $query = DB::table('negociationrecolte')
-        ->rightJoin('recolte', 'negociationrecolte.RecolteID', '=', 'recolte.RecolteID')
+      $query = DB::table('recolte')
+        ->leftjoin('negociationrecolte', 'negociationrecolte.RecolteID', '=', 'recolte.RecolteID')
         ->join('produit', 'recolte.ProduitID', '=', 'produit.ProduitID')
         ->join('utilisateur as agri', 'agri.UtilisateurID', '=', 'recolte.AgriculteurID')
         ->leftjoin('utilisateur', 'utilisateur.UtilisateurID', '=', 'negociationrecolte.AcheteurID')
@@ -105,6 +105,9 @@ class NegociationRecolteController extends \BaseController {
           $negociationrecolte->save();
 
           $modifierUrl = URL::to('negociationrecolte/' . $recolteID . '/edit/' . $negociationrecolte->NegociationRecolteID);
+          
+          Log::info("Création d'un prix pour la recolte effectué avec succès", array('RecolteID' => $recolteID, 'RecolteNegociationID' => $negociationrecolte->NegociationRecolteID));
+          
           Session::flash('success', "<p>Création de la négociation de récolte effectuée avec succès ! <a href='{$modifierUrl}' class='btn btn-success'>Modifier la négociation de la récolte</a></p>");
           return Redirect::to('negociationrecolte');
         }

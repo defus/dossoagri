@@ -23,7 +23,7 @@ class NegociationRecolteTest extends TestCase {
     //Vérifier que la réponse contient l'url  pour modification
     $message = $response->getSession()->get('success');
     $content = $response->getContent();
-    $pattern = "/negociationrecolte\/([\d]+)\//";
+    $pattern = "/negociationrecolte\/1\/edit\/([\d]+)/";
     $this->assertRegExp($pattern, $message);
     preg_match_all($pattern, $message, $negociationrecolteIdFinded);
     $this->assertCount(2, $negociationrecolteIdFinded, "Après la création, la vue qui suit doit contenir le numero de l'entité dans le lien de modification");
@@ -41,10 +41,9 @@ class NegociationRecolteTest extends TestCase {
     //modification des informations 
     $negociationrecolte1 = array();
     $negociationrecolte1['Prix'] = 100; //Prix proposé par l'acheteur
-    $negociationrecolte1['RecolteID'] = 1; //C'est la reference vers la personne qui a appartient la culture ou l'elevage
     $negociationrecolte1['StatutProposition'] = 'PREPARATION'; // PREPARATION, PUBLIE Une proposition peut-etre validée par une persone autorisée. Dans ce cas, elle est pousée vers l'agriculteur'
     
-    $response = $this->call('PUT', '/negociationrecolte/' . $negociationrecolteId, $negociationrecolte1);
+    $response = $this->call('POST', '/negociationrecolte/1/update/' . $negociationrecolteId, $negociationrecolte1);
     $this->assertResponseStatus(302);
 
     $this->assertRedirectedTo('negociationrecolte');
