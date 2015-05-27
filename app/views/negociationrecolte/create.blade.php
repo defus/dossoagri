@@ -53,7 +53,7 @@ $(document).ready(function() {
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Informations sur la production
@@ -95,10 +95,10 @@ $(document).ready(function() {
             <!-- panel -->
         </div>
         <!-- /.col-lg-4 -->
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Merci de remplir le formulaire ci-dessous pour proposer un prix pour la production
+                    Merci de remplir le formulaire ci-dessous pour proposer un nouveau prix pour cette production
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -131,9 +131,6 @@ $(document).ready(function() {
                 <!-- /.panel-body -->
             </div>
             <!-- panel -->
-        </div>
-        <!-- /.col-lg-4 -->
-        <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Liste des propositions de prix pour la production
@@ -148,7 +145,7 @@ $(document).ready(function() {
                                     <th>Prix&nbsp;</th>
                                     <th>Date&nbsp;</th>
                                     <th>Statut&nbsp;</th>
-                                    <th class="no-sort" style="width:17px;min-width:80px;max-width:80px;">Actions</th>
+                                    <th class="no-sort" style="width:100px;min-width:100px;max-width:100px;">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>

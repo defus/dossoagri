@@ -53,7 +53,7 @@ $(document).ready(function() {
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Informations sur la production
@@ -94,7 +94,7 @@ $(document).ready(function() {
             </div>
             <!-- panel -->
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Merci de remplir le formulaire ci-dessous pour modifier la proposition de prix pour cette production
@@ -112,7 +112,7 @@ $(document).ready(function() {
                             @endif
                             {{ Form::open(array('url' => URL::to('negociationrecolte/' . $recolte->RecolteID . '/update/' . $negociationrecolte->NegociationRecolteID ) , 'role' => 'form')) }}
                                 <div class="form-group @if($errors->first('Debutperiode') != '')) has-error @endif">
-                                    <label>Date de la proposition *</label>
+                                    <label>Date de la proposition</label>
                                     <p class="form-control-static">{{$negociationrecolte->DateProposition}}</p>
                                 </div>
                                 <div class="form-group @if($errors->first('Poids') != '') has-error @endif">
@@ -134,9 +134,6 @@ $(document).ready(function() {
                 <!-- /.panel-body -->
             </div>
             <!-- panel -->
-        </div>
-        <!-- /.col-lg-4 -->
-        <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Liste des propositions de prix pour la production
@@ -151,7 +148,7 @@ $(document).ready(function() {
                                     <th>Prix&nbsp;</th>
                                     <th>Date&nbsp;</th>
                                     <th>Statut&nbsp;</th>
-                                    <th class="no-sort" style="width:17px;min-width:75px;max-width:75px;">Actions</th>
+                                    <th class="no-sort" style="width:100px;min-width:100px;max-width:100px;">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
