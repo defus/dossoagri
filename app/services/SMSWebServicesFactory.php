@@ -10,7 +10,7 @@ class SMSWebServicesFactory {
 		if($gateway == 'PLAYSMS'){
 			return new SMSWebServices($this->app);
 		}else if($gateway == 'ORANGE'){
-			return new SMSWebServices($this->app);
+			return new SMSWebServicesOrange($this->app);
 		}else{
 			return new SMSWebServicesNone($this->app);
 		}
